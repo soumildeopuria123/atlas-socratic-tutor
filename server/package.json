@@ -1,0 +1,35 @@
+{
+  "name": "@atlas/server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "start": "node index.js",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:seed": "node seed.js",
+    "db:studio": "prisma studio",
+    "db:dev:schema": "node scripts/dev-schema.mjs",
+    "db:dev:push": "node scripts/dev-schema.mjs && prisma db push --schema prisma/schema.dev.prisma",
+    "db:dev:setup": "node scripts/dev-schema.mjs && prisma db push --schema prisma/schema.dev.prisma && prisma generate --schema prisma/schema.dev.prisma && node seed.js",
+    "test": "node --test tests/*.test.js",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "prisma": "^5.22.0"
+  },
+  "engines": {
+    "node": ">=18.17"
+  }
+}
