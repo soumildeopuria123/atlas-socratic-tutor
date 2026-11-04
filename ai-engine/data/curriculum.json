@@ -1,0 +1,3700 @@
+{
+  "generatedAt": "2026-10-20T04:20:46.928Z",
+  "passThreshold": 0.75,
+  "examSeconds": {
+    "FOUNDATION": 1080,
+    "INTERMEDIATE": 1800,
+    "ADVANCED": 2880
+  },
+  "courses": [
+    {
+      "slug": "trigonometry",
+      "title": "Trigonometry",
+      "discipline": "Mathematics",
+      "level": "Foundation → Advanced",
+      "icon": "triangle",
+      "summary": "From right-triangle ratios to the unit circle, identities, and the calculus that harmonises them. Built for learners who have never met sine before.",
+      "layers": [
+        {
+          "layer": 1,
+          "title": "Geometric Ratios & Right Triangles",
+          "tier": "FOUNDATION",
+          "minutes": 18,
+          "objectives": [
+            "Name the three sides of a right triangle relative to a chosen angle",
+            "Compute sine, cosine, and tangent as pure side ratios",
+            "Use SOH-CAH-TOA without memorising numbers",
+            "Recognise why the ratios do not depend on triangle size"
+          ],
+          "concepts": [
+            {
+              "term": "Sine (sin θ)",
+              "definition": "The ratio of the side opposite angle θ to the hypotenuse in a right triangle: sin θ = opposite / hypotenuse."
+            },
+            {
+              "term": "Cosine (cos θ)",
+              "definition": "The ratio of the side adjacent to angle θ (the leg touching it, not the hypotenuse) to the hypotenuse: cos θ = adjacent / hypotenuse."
+            },
+            {
+              "term": "Tangent (tan θ)",
+              "definition": "The ratio of the opposite leg to the adjacent leg: tan θ = opposite / adjacent, equivalently sin θ / cos θ."
+            },
+            {
+              "term": "Hypotenuse",
+              "definition": "The longest side of a right triangle, opposite the 90° angle. It is the denominator of both sine and cosine."
+            }
+          ],
+          "intuition": "Scale a right triangle up or down and the *angles* stay the same while the sides change. That means any ratio of two sides is a fingerprint of the angle alone. Charts of sine values are really charts of triangle shapes — that is why one table works for every size of triangle.",
+          "worked": {
+            "problem": "In a right triangle the side opposite θ is 3, the adjacent side is 4, and the hypotenuse is 5. Find sin θ, cos θ, and tan θ.",
+            "steps": [
+              "Identify the hypotenuse: the side across from the right angle, length 5.",
+              "sin θ = opposite / hypotenuse = 3 / 5 = 0.6.",
+              "cos θ = adjacent / hypotenuse = 4 / 5 = 0.8.",
+              "tan θ = opposite / adjacent = 3 / 4 = 0.75. Check: sin / cos = 0.6 / 0.8 = 0.75 ✓"
+            ],
+            "answer": "sin θ = 0.6, cos θ = 0.8, tan θ = 0.75"
+          },
+          "table": {
+            "caption": "The three ratios, and how to recover the missing side",
+            "head": [
+              "Ratio",
+              "Formula",
+              "Solve for opposite",
+              "Solve for adjacent"
+            ],
+            "rows": [
+              [
+                "sin θ",
+                "opp / hyp",
+                "opp = hyp · sin θ",
+                "—"
+              ],
+              [
+                "cos θ",
+                "adj / hyp",
+                "—",
+                "adj = hyp · cos θ"
+              ],
+              [
+                "tan θ",
+                "opp / adj",
+                "opp = adj · tan θ",
+                "adj = opp / tan θ"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  T[Right triangle] --> H[Hypotenuse: across from 90°]\n  T --> O[Opposite: across from θ]\n  T --> A[Adjacent: touches θ]\n  O --> S[sin θ = O / H]\n  A --> C[cos θ = A / H]\n  O --> N[tan θ = O / A]",
+          "pitfalls": [
+            "Choosing \"adjacent\" as the hypotenuse — the hypotenuse is never adjacent to the right angle.",
+            "Computing a ratio upside down; sin is always opposite over hypotenuse, never hypotenuse over opposite."
+          ],
+          "scenario": {
+            "q": "A ramp rises 1 m over a horizontal run of 4 m. Which ratio directly gives the ramp angle?",
+            "options": [
+              "sin θ = 1 / 4",
+              "tan θ = 1 / 4",
+              "cos θ = 1 / 4",
+              "sin θ = 4 / 1"
+            ],
+            "answer": 1,
+            "why": "The rise (1 m) is opposite the incline angle and the run (4 m) is adjacent, so tan θ = rise / run = 1 / 4, giving θ ≈ 14°."
+          }
+        },
+        {
+          "layer": 2,
+          "title": "The Unit Circle & Radians",
+          "tier": "FOUNDATION",
+          "minutes": 20,
+          "objectives": [
+            "Convert between degrees and radians exactly",
+            "Read sine and cosine as coordinates on the unit circle",
+            "Locate angles in all four quadrants using reference angles",
+            "Derive arc length and sector area from radians"
+          ],
+          "concepts": [
+            {
+              "term": "Radian",
+              "definition": "The angle subtended at the centre of a circle by an arc equal in length to the radius. A full turn is 2π radians = 360°, so 1 radian ≈ 57.3°."
+            },
+            {
+              "term": "Unit circle",
+              "definition": "The circle of radius 1 centred at the origin. A point at angle θ has coordinates (cos θ, sin θ), which extends trigonometry beyond 0°–90°."
+            },
+            {
+              "term": "Reference angle",
+              "definition": "The acute angle between the terminal side of θ and the nearest x-axis; it supplies the magnitude of sin and cos while the quadrant supplies the sign."
+            },
+            {
+              "term": "Arc length",
+              "definition": "For a circle of radius r and central angle θ in radians, arc length s = rθ. Using degrees instead would require the extra factor π/180."
+            }
+          ],
+          "intuition": "A right triangle only describes angles up to 90°. Rotate the hypotenuse around the origin at fixed length 1 and its tip sweeps the unit circle: the x-coordinate is cos θ, the y-coordinate is sin θ. Now every angle, including negative and >360° ones, has a coordinate pair, and the signs come from the quadrant rather than from a triangle.",
+          "worked": {
+            "problem": "Convert 135° to radians and evaluate sin 135° and cos 135°.",
+            "steps": [
+              "Multiply by π/180: 135 · π/180 = 3π/4.",
+              "The reference angle is 180° − 135° = 45°, so magnitudes are sin 45° = √2/2 and cos 45° = √2/2.",
+              "135° sits in quadrant II: x < 0, y > 0.",
+              "Therefore cos 135° = −√2/2 and sin 135° = +√2/2."
+            ],
+            "answer": "135° = 3π/4; sin 135° = √2/2, cos 135° = −√2/2"
+          },
+          "table": {
+            "caption": "Exact values worth knowing by derivation, not memorisation",
+            "head": [
+              "Angle",
+              "Radians",
+              "cos",
+              "sin",
+              "tan"
+            ],
+            "rows": [
+              [
+                "0°",
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "30°",
+                "π/6",
+                "√3/2",
+                "1/2",
+                "1/√3"
+              ],
+              [
+                "45°",
+                "π/4",
+                "√2/2",
+                "√2/2",
+                "1"
+              ],
+              [
+                "60°",
+                "π/3",
+                "1/2",
+                "√3/2",
+                "√3"
+              ],
+              [
+                "90°",
+                "π/2",
+                "0",
+                "1",
+                "undefined"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  A[Angle θ] --> B[Quadrant?]\n  B --> C[Reference angle α]\n  C --> D[Look up sin α, cos α]\n  D --> E[Apply quadrant signs]\n  E --> F[(cos θ, sin θ)]",
+          "pitfalls": [
+            "Forgetting that tangent is undefined at 90° because cos 90° = 0.",
+            "Applying reference-angle magnitudes without quadrant signs, so sin 225° comes out positive.",
+            "Mixing units inside s = rθ; the formula only works in radians."
+          ],
+          "scenario": {
+            "q": "A wheel of radius 0.4 m turns through 3 radians. How far does a point on the rim travel?",
+            "options": [
+              "1.2 m",
+              "0.4 m",
+              "2.4 m",
+              "0.13 m"
+            ],
+            "answer": 0,
+            "why": "s = rθ = 0.4 · 3 = 1.2 m. Multiplying by π/180 here would be a unit error."
+          }
+        },
+        {
+          "layer": 3,
+          "title": "Graphs & Periodicity",
+          "tier": "INTERMEDIATE",
+          "minutes": 22,
+          "objectives": [
+            "Identify amplitude, period, phase shift, and vertical shift from a formula",
+            "Sketch sine, cosine, and tangent families",
+            "Model a repeating real-world signal",
+            "Explain why tangent has asymptotes"
+          ],
+          "concepts": [
+            {
+              "term": "Amplitude",
+              "definition": "Half the distance between a periodic function's maximum and minimum. For y = A sin(Bx + C) + D the amplitude is |A|."
+            },
+            {
+              "term": "Period",
+              "definition": "The horizontal length of one full cycle. For sine and cosine the period is 2π/|B|; for tangent it is π/|B|."
+            },
+            {
+              "term": "Phase shift",
+              "definition": "The horizontal translation of a wave, equal to −C/B in y = A sin(Bx + C) + D. Positive C shifts the graph left."
+            },
+            {
+              "term": "Asymptote (vertical)",
+              "definition": "A vertical line the graph approaches but never touches. tan x has asymptotes at x = π/2 + kπ because cosine is zero there."
+            }
+          ],
+          "intuition": "Read a transformed wave as a recipe, not a formula: A stretches it vertically, B compresses it horizontally, C slides it sideways, D lifts the centreline. Because sine and cosine are the same wave offset by a quarter turn, every cosine graph is a shifted sine — choosing which to use is a modelling convenience, not a mathematical difference.",
+          "worked": {
+            "problem": "Describe and sketch one period of y = 3 sin(2x − π/2) + 1.",
+            "steps": [
+              "Amplitude |A| = 3, so the wave oscillates between 1 − 3 = −2 and 1 + 3 = 4.",
+              "The midline is y = 1 (the vertical shift D).",
+              "Period = 2π / |B| = 2π/2 = π.",
+              "Phase shift = −C/B = −(−π/2)/2 = π/4 to the right.",
+              "Plot key points π/4 apart: start at midline rising, then max 4, midline 1, min −2, midline 1."
+            ],
+            "answer": "Amplitude 3, period π, shift π/4 right, midline y = 1, range [−2, 4]"
+          },
+          "table": {
+            "caption": "Transformation vocabulary applied to y = A sin(Bx + C) + D",
+            "head": [
+              "Parameter",
+              "Controls",
+              "Formula",
+              "Effect of doubling it"
+            ],
+            "rows": [
+              [
+                "A",
+                "Amplitude",
+                "|A|",
+                "Doubles vertical stretch"
+              ],
+              [
+                "B",
+                "Frequency",
+                "period = 2π/|B|",
+                "Halves the period"
+              ],
+              [
+                "C",
+                "Phase",
+                "−C/B",
+                "Doubles the shift"
+              ],
+              [
+                "D",
+                "Midline",
+                "y = D",
+                "Raises centreline twice as far"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  F[\"y = A sin(Bx + C) + D\"] --> A[\"A: amplitude |A|\"]\n  F --> B[\"B: period 2π/|B|\"]\n  F --> C[\"C: shift −C/B\"]\n  F --> D[\"D: midline y = D\"]\n  A --> G[Sketch key points]\n  B --> G\n  C --> G\n  D --> G",
+          "pitfalls": [
+            "Reading the phase shift as C rather than −C/B.",
+            "Assuming amplitude can be negative — it is |A|, while a negative A reflects the wave.",
+            "Giving sine a period of π; that is tangent's period."
+          ],
+          "scenario": {
+            "q": "A tide has a high of 5 m at 02:00 and a low of 1 m at 08:00. Which model fits?",
+            "options": [
+              "y = 2 cos(π(t − 2)/6) + 3",
+              "y = 3 cos(π(t − 2)/6) + 2",
+              "y = 2 sin(2π(t − 2)/6) + 3",
+              "y = 5 cos(π t / 12) + 1"
+            ],
+            "answer": 0,
+            "why": "Amplitude = (5 − 1)/2 = 2, midline = 3, half-cycle (high to low) is 6 h so the period is 12 h giving B = 2π/12 = π/6, and a cosine peaks at t = 2."
+          }
+        },
+        {
+          "layer": 4,
+          "title": "Identities & Equations",
+          "tier": "INTERMEDIATE",
+          "minutes": 25,
+          "objectives": [
+            "Prove the Pythagorean identity from the unit circle",
+            "Simplify expressions with sum, difference, and double-angle identities",
+            "Solve trigonometric equations on a given interval",
+            "Use identities to avoid dividing by zero"
+          ],
+          "concepts": [
+            {
+              "term": "Pythagorean identity",
+              "definition": "sin²θ + cos²θ = 1 for every θ. It follows directly from the unit circle equation x² + y² = 1."
+            },
+            {
+              "term": "Sum identity",
+              "definition": "sin(A ± B) = sin A cos B ± cos A sin B, and cos(A ± B) = cos A cos B ∓ sin A sin B. These generate every other identity."
+            },
+            {
+              "term": "Double-angle identity",
+              "definition": "sin 2θ = 2 sin θ cos θ and cos 2θ = cos²θ − sin²θ = 1 − 2sin²θ = 2cos²θ − 1."
+            },
+            {
+              "term": "General solution",
+              "definition": "Because sine and cosine repeat every 2π, an equation such as sin θ = 0.5 has solutions θ = π/6 + 2kπ and θ = 5π/6 + 2kπ for integer k."
+            }
+          ],
+          "intuition": "Identities are not a list to memorise; they are one fact — the unit circle — rewritten. Anything you can prove from sin² + cos² = 1, you own forever. When solving an equation, isolate one trigonometric function, find the principal solutions in one cycle, then add the period to capture the rest. Dividing both sides by cos θ is the classic way to lose solutions.",
+          "worked": {
+            "problem": "Solve 2sin²θ − sin θ − 1 = 0 for 0 ≤ θ < 2π.",
+            "steps": [
+              "Treat sin θ as a single variable u: 2u² − u − 1 = 0.",
+              "Factor: (2u + 1)(u − 1) = 0, so u = −1/2 or u = 1.",
+              "sin θ = 1 gives θ = π/2.",
+              "sin θ = −1/2 gives reference angle π/6 in quadrants III and IV: θ = 7π/6 and θ = 11π/6.",
+              "Collect all solutions in the interval."
+            ],
+            "answer": "θ = π/2, 7π/6, 11π/6"
+          },
+          "table": {
+            "caption": "The identity toolkit and when to reach for it",
+            "head": [
+              "Identity",
+              "Form",
+              "Typical use"
+            ],
+            "rows": [
+              [
+                "Pythagorean",
+                "sin²θ + cos²θ = 1",
+                "Convert between sin and cos"
+              ],
+              [
+                "Tangent",
+                "tan θ = sin θ / cos θ",
+                "Turn products into a single ratio"
+              ],
+              [
+                "Double angle",
+                "sin 2θ = 2 sin θ cos θ",
+                "Collapse mixed frequencies"
+              ],
+              [
+                "Sum",
+                "sin(A + B) = sin A cos B + cos A sin B",
+                "Expand compound angles"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  E[Equation] --> I[Isolate one trig function]\n  I --> S[Solve in one period]\n  S --> R[Find reference angle]\n  R --> Q[Apply quadrant solutions]\n  Q --> P[Add period kT]\n  P --> C[Check interval and domain]",
+          "pitfalls": [
+            "Dividing by cos θ and silently discarding solutions where cos θ = 0.",
+            "Forgetting the second solution a reference angle produces in another quadrant.",
+            "Applying a double-angle identity to sin(2θ) when the argument is really 2 sin θ."
+          ],
+          "scenario": {
+            "q": "You simplify sin θ · cos θ. Which single expression is equivalent?",
+            "options": [
+              "½ sin 2θ",
+              "sin²θ",
+              "cos 2θ",
+              "2 sin 2θ"
+            ],
+            "answer": 0,
+            "why": "The double-angle identity rear-ranged: ½ sin 2θ = ½ · 2 sin θ cos θ = sin θ cos θ."
+          }
+        },
+        {
+          "layer": 5,
+          "title": "Advanced Applications & Calculus Integration",
+          "tier": "ADVANCED",
+          "minutes": 30,
+          "objectives": [
+            "Differentiate and integrate sine and cosine from the unit circle",
+            "Model harmonic motion with amplitude-phase form",
+            "Use inverse trigonometry in real geometry problems",
+            "Recognise where Fourier analysis extends the same wave idea"
+          ],
+          "concepts": [
+            {
+              "term": "Derivative of sine",
+              "definition": "d/dx sin x = cos x and d/dx cos x = −sin x (x in radians). The radian requirement exists because the limit sin h / h → 1 only holds in radians."
+            },
+            {
+              "term": "Harmonic motion model",
+              "definition": "A quantity oscillating about equilibrium is written x(t) = A cos(ωt + φ), where ω is angular frequency and φ the phase; period T = 2π/ω."
+            },
+            {
+              "term": "Inverse sine (arcsin)",
+              "definition": "arcsin y returns the angle in [−π/2, π/2] whose sine is y. The restriction guarantees a single-valued inverse."
+            },
+            {
+              "term": "Fourier decomposition",
+              "definition": "Any reasonably well-behaved periodic signal can be written as a sum of sines and cosines at integer multiples of its base frequency; coefficients come from integrating the signal against those waves."
+            }
+          ],
+          "intuition": "Sine and cosine are each other's derivative up to a sign, which is exactly the signature of circular motion: velocity is perpendicular to position. That single geometric fact powers simple harmonic motion, AC circuits, signal processing, and the Fourier transform — all of them are statement that a wave can be differentiated, added, and decomposed without ever leaving the family.",
+          "worked": {
+            "problem": "A mass on a spring has position x(t) = 0.08 cos(6t) metres. Find its maximum speed and the first time it passes equilibrium.",
+            "steps": [
+              "Velocity is the derivative: v(t) = −0.08 · 6 sin(6t) = −0.48 sin(6t).",
+              "Maximum speed is the amplitude of velocity: |−0.48| = 0.48 m/s.",
+              "Equilibrium means x = 0, so cos(6t) = 0.",
+              "First positive solution: 6t = π/2, so t = π/12 ≈ 0.262 s.",
+              "At that moment sin(6t) = 1, confirming maximum speed at the crossing."
+            ],
+            "answer": "v_max = 0.48 m/s; first equilibrium crossing at t = π/12 s"
+          },
+          "table": {
+            "caption": "Calculus of the circular functions",
+            "head": [
+              "Function",
+              "Derivative",
+              "Antiderivative",
+              "Sign intuition"
+            ],
+            "rows": [
+              [
+                "sin x",
+                "cos x",
+                "−cos x + C",
+                "Starts at 0, slope is max"
+              ],
+              [
+                "cos x",
+                "−sin x",
+                "sin x + C",
+                "Starts at peak, slope is 0"
+              ],
+              [
+                "tan x",
+                "sec² x",
+                "−ln|cos x| + C",
+                "Increasing everywhere it exists"
+              ],
+              [
+                "arcsin x",
+                "1 / √(1 − x²)",
+                "x arcsin x + √(1 − x²) + C",
+                "Domain [−1, 1]"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  S[sin x] -->|d/dx| C[cos x]\n  C -->|d/dx| NS[\"−sin x\"]\n  NS -->|d/dx| NC[\"−cos x\"]\n  NC -->|d/dx| S\n  S --> H[Harmonic motion]\n  H --> F[Fourier decomposition]",
+          "pitfalls": [
+            "Differentiating in degrees, which introduces a stray factor of π/180.",
+            "Forgetting that integrating sine yields a negative cosine.",
+            "Using arcsin outside [−1, 1] and expecting a real angle."
+          ],
+          "scenario": {
+            "q": "What is ∫₀^π sin x dx?",
+            "options": [
+              "2",
+              "0",
+              "1",
+              "−2"
+            ],
+            "answer": 0,
+            "why": "The antiderivative is −cos x, evaluated: (−cos π) − (−cos 0) = 1 + 1 = 2, the area of one positive arch."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "calculus",
+      "title": "Calculus",
+      "discipline": "Mathematics",
+      "level": "Foundation → Advanced",
+      "icon": "curve",
+      "summary": "Limits, derivatives, integrals, and the machinery of change — rebuilt from first principles so nothing is a rule without a reason.",
+      "layers": [
+        {
+          "layer": 1,
+          "title": "Limits & Continuity",
+          "tier": "FOUNDATION",
+          "minutes": 18,
+          "objectives": [
+            "Read limit notation as a prediction, not an evaluation",
+            "Compute limits by substitution, factoring, and rationalising",
+            "Distinguish removable, jump, and infinite discontinuities",
+            "Explain why 0/0 is indeterminate rather than undefined"
+          ],
+          "concepts": [
+            {
+              "term": "Limit",
+              "definition": "lim(x→a) f(x) = L means f(x) can be made arbitrarily close to L by taking x sufficiently close to a, without requiring f(a) to equal L."
+            },
+            {
+              "term": "One-sided limit",
+              "definition": "The value approached from one side only: x→a⁺ (larger values) or x→a⁻. A two-sided limit exists exactly when both one-sided limits exist and agree."
+            },
+            {
+              "term": "Continuity at a point",
+              "definition": "f is continuous at a when f(a) is defined, lim(x→a) f(x) exists, and the two are equal. All three conditions must hold."
+            },
+            {
+              "term": "Indeterminate form",
+              "definition": "An expression such as 0/0 or ∞/∞ that does not by itself determine a value; the limit must be resolved through algebra or L'Hôpital's rule."
+            }
+          ],
+          "intuition": "A limit asks \"where is the function heading?\", not \"where does it land?\". This distinction is the entire foundation of calculus: the derivative is a limit of slopes at a point the two sample points never actually reach. Continuity is the extra promise that the landing spot equals the destination.",
+          "worked": {
+            "problem": "Evaluate lim(x→2) (x² − 4)/(x − 2).",
+            "steps": [
+              "Direct substitution gives 0/0 — indeterminate, so factor instead of concluding \"undefined\".",
+              "Factor the numerator: (x − 2)(x + 2).",
+              "Cancel the common factor for x ≠ 2: the expression becomes x + 2.",
+              "Now substitute: 2 + 2 = 4.",
+              "The original function has a removable hole at x = 2, but the limit is still 4."
+            ],
+            "answer": "4"
+          },
+          "table": {
+            "caption": "Technique selection by symptom",
+            "head": [
+              "Symptom on substitution",
+              "Technique",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Finite value",
+                "Direct substitution",
+                "(x + 1) at x = 3 → 4"
+              ],
+              [
+                "0/0 with polynomials",
+                "Factor and cancel",
+                "(x² − 9)/(x − 3)"
+              ],
+              [
+                "0/0 with roots",
+                "Multiply by the conjugate",
+                "(√x − 2)/(x − 4)"
+              ],
+              [
+                "∞/∞",
+                "Divide by highest power or L'Hôpital",
+                "(3x² + 1)/(x² − 5)"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  S[Substitute x = a] --> A{Finite?}\n  A -->|Yes| L[Limit found]\n  A -->|\"0/0 or ∞/∞\"| B[Transform algebraically]\n  B --> C{Resolved?}\n  C -->|Yes| L\n  C -->|No| D[L'Hôpital or squeeze]\n  D --> L",
+          "pitfalls": [
+            "Cancelling a factor and then claiming the function equals the simplified form at the hole — the limit matches, the function value does not.",
+            "Assuming a limit exists when the two one-sided limits disagree.",
+            "Applying L'Hôpital to a form that is not indeterminate."
+          ],
+          "scenario": {
+            "q": "What is lim(x→0) sin x / x?",
+            "options": [
+              "1",
+              "0",
+              "Undefined",
+              "∞"
+            ],
+            "answer": 0,
+            "why": "Substitution gives 0/0, but the small-angle geometry of the unit circle bounds cos x ≤ sin x / x ≤ 1, so the squeeze theorem forces the limit to 1."
+          }
+        },
+        {
+          "layer": 2,
+          "title": "Derivatives from First Principles",
+          "tier": "FOUNDATION",
+          "minutes": 22,
+          "objectives": [
+            "Build the derivative as a limit of secant slopes",
+            "Differentiate polynomials, products, quotients, and compositions",
+            "Interpret the derivative as instantaneous rate and tangent slope",
+            "Explain why differentiability implies continuity but not the converse"
+          ],
+          "concepts": [
+            {
+              "term": "Difference quotient",
+              "definition": "The average rate of change over an interval: [f(x + h) − f(x)] / h. Its limit as h→0 is the derivative."
+            },
+            {
+              "term": "Derivative",
+              "definition": "f′(x) = lim(h→0) [f(x + h) − f(x)] / h — the instantaneous rate of change, equal to the slope of the tangent line at x."
+            },
+            {
+              "term": "Chain rule",
+              "definition": "For a composition, d/dx f(g(x)) = f′(g(x)) · g′(x). Differentiate the outside, then multiply by the inside's derivative."
+            },
+            {
+              "term": "Differentiability",
+              "definition": "f is differentiable at a when the derivative limit exists. This requires continuity at a, but continuity does not imply differentiability (|x| at 0 is the standard counterexample)."
+            }
+          ],
+          "intuition": "Slope needs two points; instantaneous change needs one. The difference quotient bridges them, and the limit performs the leap. Practically, f′(a) answers \"if I nudge the input by a tiny amount, how much does the output move?\" — that reading survives into gradients, sensitivity analysis, and physics.",
+          "worked": {
+            "problem": "Differentiate f(x) = (3x² + 1)⁵.",
+            "steps": [
+              "Identify the composition: outer u⁵, inner u = 3x² + 1.",
+              "Differentiate the outer with respect to u: 5u⁴.",
+              "Differentiate the inner: d/dx (3x² + 1) = 6x.",
+              "Multiply (chain rule): f′(x) = 5(3x² + 1)⁴ · 6x.",
+              "Simplify: f′(x) = 30x(3x² + 1)⁴."
+            ],
+            "answer": "f′(x) = 30x(3x² + 1)⁴"
+          },
+          "table": {
+            "caption": "Core rules, with the shape they apply to",
+            "head": [
+              "Rule",
+              "Formula",
+              "Use when"
+            ],
+            "rows": [
+              [
+                "Power",
+                "d/dx xⁿ = n xⁿ⁻¹",
+                "Single term"
+              ],
+              [
+                "Product",
+                "(uv)′ = u′v + uv′",
+                "Two factors multiplied"
+              ],
+              [
+                "Quotient",
+                "(u/v)′ = (u′v − uv′) / v²",
+                "One function over another"
+              ],
+              [
+                "Chain",
+                "(f∘g)′ = f′(g) · g′",
+                "Function inside a function"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  P1[\"(x, f(x))\"] --> Q[\"(x+h, f(x+h))\"]\n  Q --> S[Secant slope]\n  S -->|\"h → 0\"| T[Tangent slope f′]\n  T --> R[Rate of change]\n  R --> U[Optimisation / motion / gradients]",
+          "pitfalls": [
+            "Applying the power rule to something like 2ˣ — the exponent must be constant.",
+            "Forgetting the inside derivative in the chain rule.",
+            "Claiming a function is differentiable because it is continuous."
+          ],
+          "scenario": {
+            "q": "A balloon's radius grows at 2 cm/s. How fast is its volume growing when r = 5 cm? (V = 4/3 πr³)",
+            "options": [
+              "200π cm³/s",
+              "50π cm³/s",
+              "40π cm³/s",
+              "100 cm³/s"
+            ],
+            "answer": 0,
+            "why": "dV/dt = 4πr² · dr/dt = 4π(25)(2) = 200π cm³/s."
+          }
+        },
+        {
+          "layer": 3,
+          "title": "Applications of Derivatives",
+          "tier": "INTERMEDIATE",
+          "minutes": 25,
+          "objectives": [
+            "Find critical points and classify them with derivative tests",
+            "Solve constrained optimisation problems",
+            "Use the mean value theorem as a guarantee",
+            "Interpret second derivatives as concavity and acceleration"
+          ],
+          "concepts": [
+            {
+              "term": "Critical point",
+              "definition": "A point in the domain where f′(x) = 0 or f′ does not exist. Local extrema can only occur at critical points or endpoints."
+            },
+            {
+              "term": "First derivative test",
+              "definition": "If f′ changes from positive to negative across a critical point, it is a local maximum; negative to positive gives a local minimum; no sign change gives neither."
+            },
+            {
+              "term": "Concavity",
+              "definition": "f is concave up where f″ > 0 (tangent lines below the curve) and concave down where f″ < 0. An inflection point is where concavity changes."
+            },
+            {
+              "term": "Constraint equation",
+              "definition": "In optimisation, the relation among variables (e.g. perimeter = 40) used to express the objective in one variable before differentiating."
+            }
+          ],
+          "intuition": "Derivatives turn shape questions into algebra. \"Where is the biggest?\" becomes \"where is the slope zero and switching sign?\" The second derivative tells you how the rate itself is changing, which is why it distinguishes a peak from a valley and acceleration from velocity. Always check endpoints: a closed interval can hide its extreme value at the boundary.",
+          "worked": {
+            "problem": "A rectangle has perimeter 40 m. What dimensions maximise its area?",
+            "steps": [
+              "Let width = x and height = y, with 2x + 2y = 40 so y = 20 − x.",
+              "Objective: A(x) = x(20 − x) = 20x − x².",
+              "Differentiate: A′(x) = 20 − 2x.",
+              "Set A′ = 0: x = 10. Since A″ = −2 < 0, this is a maximum.",
+              "Then y = 20 − 10 = 10, so the maximum area is a square of 100 m²."
+            ],
+            "answer": "A 10 m × 10 m square, area 100 m²"
+          },
+          "table": {
+            "caption": "Reading the derivatives at a point",
+            "head": [
+              "f′",
+              "f″",
+              "Shape",
+              "Example"
+            ],
+            "rows": [
+              [
+                "0",
+                "< 0",
+                "Local maximum",
+                "Top of a projectile arc"
+              ],
+              [
+                "0",
+                "> 0",
+                "Local minimum",
+                "Bottom of a cost curve"
+              ],
+              [
+                "> 0",
+                "> 0",
+                "Increasing, concave up",
+                "Exponential growth"
+              ],
+              [
+                "< 0",
+                "> 0",
+                "Decreasing, concave up",
+                "Decelerating descent"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  S[Read the problem] --> V[Name variables]\n  V --> C[Write the constraint]\n  C --> O[Objective in one variable]\n  O --> D[Differentiate]\n  D --> Z[Solve f′ = 0]\n  Z --> T[Second derivative or sign test]\n  T --> E[Check endpoints and domain]",
+          "pitfalls": [
+            "Optimising before substituting the constraint, leaving two variables in one equation.",
+            "Assuming every critical point is an extremum.",
+            "Ignoring the physical domain — negative lengths are not valid answers."
+          ],
+          "scenario": {
+            "q": "f(x) = x³ has f′(0) = 0 but no extremum at x = 0. Why?",
+            "options": [
+              "f′ does not change sign there; it is an inflection point",
+              "The second derivative is zero",
+              "x = 0 is not in the domain",
+              "The first derivative test fails for cubics"
+            ],
+            "answer": 0,
+            "why": "f′ = 3x² is non-negative on both sides, so the function keeps increasing through the flat spot. f″ = 0 confirms an inflection, not an extremum."
+          }
+        },
+        {
+          "layer": 4,
+          "title": "Integration & the Fundamental Theorem",
+          "tier": "INTERMEDIATE",
+          "minutes": 28,
+          "objectives": [
+            "Approximate area with Riemann sums and pass to the definite integral",
+            "Use the fundamental theorem to evaluate integrals exactly",
+            "Integrate by substitution and by parts",
+            "Interpret signed area and net change"
+          ],
+          "concepts": [
+            {
+              "term": "Riemann sum",
+              "definition": "An approximation of area under a curve by summing rectangles: Σ f(xᵢ) Δx. The definite integral is the limit as the partition becomes infinitely fine."
+            },
+            {
+              "term": "Definite integral",
+              "definition": "∫ₐᵇ f(x) dx is the signed area between f and the x-axis from a to b — area below the axis counts as negative."
+            },
+            {
+              "term": "Fundamental theorem of calculus",
+              "definition": "If F is an antiderivative of f, then ∫ₐᵇ f(x) dx = F(b) − F(a). It links accumulation (integrals) with rates (derivatives) as inverse operations."
+            },
+            {
+              "term": "Integration by substitution",
+              "definition": "The chain rule run backwards: replace u = g(x), du = g′(x) dx, turning a composite integrand into a simpler one."
+            }
+          ],
+          "intuition": "Integration is accumulation. Slice a quantity into thin pieces, add the pieces, and take the limit — that recipe computes area, distance from velocity, mass from density, and probability from a density curve. The fundamental theorem is the punchline: accumulating a rate recovers the original quantity, which is why integrals and derivatives undo each other.",
+          "worked": {
+            "problem": "Evaluate ∫₁⁴ (2x + 1) dx.",
+            "steps": [
+              "Find an antiderivative: F(x) = x² + x.",
+              "Apply the fundamental theorem: F(4) − F(1).",
+              "F(4) = 16 + 4 = 20.",
+              "F(1) = 1 + 1 = 2.",
+              "Subtract: 20 − 2 = 18."
+            ],
+            "answer": "18"
+          },
+          "table": {
+            "caption": "Choosing an integration technique",
+            "head": [
+              "Integrand shape",
+              "Technique",
+              "Check by differentiating"
+            ],
+            "rows": [
+              [
+                "f(g(x)) · g′(x)",
+                "Substitution",
+                "Chain rule"
+              ],
+              [
+                "x · eˣ or x · sin x",
+                "Integration by parts",
+                "Product rule"
+              ],
+              [
+                "Rational with factorable denominator",
+                "Partial fractions",
+                "Quotient algebra"
+              ],
+              [
+                "√(a² − x²)",
+                "Trigonometric substitution",
+                "Inverse trig derivatives"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  A[Area problem] --> B[Slice into rectangles]\n  B --> C[Riemann sum]\n  C -->|\"n → ∞\"| D[Definite integral]\n  D --> E[Antiderivative F]\n  E --> F[\"F(b) − F(a)\"]\n  F --> G[Net change]",
+          "pitfalls": [
+            "Forgetting the constant of integration for indefinite integrals.",
+            "Dropping the negative contribution when the curve dips below the axis.",
+            "Changing the variable of integration but not the limits in a substitution."
+          ],
+          "scenario": {
+            "q": "A particle has velocity v(t) = 3t² m/s. How far does it travel from t = 0 to t = 2 s?",
+            "options": [
+              "8 m",
+              "12 m",
+              "6 m",
+              "24 m"
+            ],
+            "answer": 0,
+            "why": "Distance = ∫₀² 3t² dt = [t³]₀² = 8 − 0 = 8 m."
+          }
+        },
+        {
+          "layer": 5,
+          "title": "Series, Multivariable & Differential Equations",
+          "tier": "ADVANCED",
+          "minutes": 32,
+          "objectives": [
+            "Expand a function as a Taylor series and bound the error",
+            "Compute partial derivatives and interpret the gradient",
+            "Solve separable first-order differential equations",
+            "Recognise when a series converges absolutely"
+          ],
+          "concepts": [
+            {
+              "term": "Taylor series",
+              "definition": "f(x) = Σ f⁽ⁿ⁾(a)(x − a)ⁿ / n! near x = a. Truncating after n terms leaves an error governed by the next term."
+            },
+            {
+              "term": "Partial derivative",
+              "definition": "∂f/∂x measures how f changes as x varies while every other input is held fixed. It is an ordinary derivative in a slice of the domain."
+            },
+            {
+              "term": "Gradient",
+              "definition": "The vector of all partial derivatives, ∇f. It points in the direction of steepest ascent and is orthogonal to level curves — the basis of gradient descent."
+            },
+            {
+              "term": "Separable ODE",
+              "definition": "A differential equation writable as dy/dx = g(x)h(y). Rearranging to dy/h(y) = g(x) dx and integrating both sides solves it."
+            }
+          ],
+          "intuition": "Locally, every smooth function is a polynomial — that is the Taylor promise, and it is how calculators, physics engines, and neural network initialisations actually compute sine and exp. In several variables the derivative stops being a number and becomes a direction: the gradient tells you which way is uphill, which is precisely the information optimisation algorithms need.",
+          "worked": {
+            "problem": "Solve dy/dx = 2xy with y(0) = 3.",
+            "steps": [
+              "Separate: dy/y = 2x dx (valid where y ≠ 0).",
+              "Integrate both sides: ln|y| = x² + C.",
+              "Exponentiate: y = A e^{x²}.",
+              "Apply the initial condition: 3 = A e⁰ = A.",
+              "Write the particular solution and note it is valid for all real x."
+            ],
+            "answer": "y = 3e^{x²}"
+          },
+          "table": {
+            "caption": "Series worth recognising",
+            "head": [
+              "Function",
+              "Expansion about 0",
+              "Radius of convergence"
+            ],
+            "rows": [
+              [
+                "eˣ",
+                "1 + x + x²/2! + x³/3! + …",
+                "∞"
+              ],
+              [
+                "sin x",
+                "x − x³/3! + x⁵/5! − …",
+                "∞"
+              ],
+              [
+                "cos x",
+                "1 − x²/2! + x⁴/4! − …",
+                "∞"
+              ],
+              [
+                "1/(1 − x)",
+                "1 + x + x² + x³ + …",
+                "1"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  F[Smooth f] --> T[Taylor expansion at a]\n  T --> P[Truncate to degree n]\n  T --> E[Bound error with next term]\n  F --> M[Several variables]\n  M --> G[Gradient ∇f]\n  G --> O[Steepest ascent / descent]\n  F --> D[Differential equation]\n  D --> S[Separate and integrate]",
+          "pitfalls": [
+            "Using a Taylor polynomial far outside its interval of convergence.",
+            "Treating ∂f/∂x as the full derivative when other variables also change.",
+            "Losing the constant of integration before applying an initial condition."
+          ],
+          "scenario": {
+            "q": "For f(x, y) = x²y + y³, what is ∇f at (1, 2)?",
+            "options": [
+              "(4, 13)",
+              "(4, 12)",
+              "(2, 13)",
+              "(1, 6)"
+            ],
+            "answer": 0,
+            "why": "∂f/∂x = 2xy = 4 and ∂f/∂y = x² + 3y² = 1 + 12 = 13, so ∇f = (4, 13)."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "linear-algebra",
+      "title": "Linear Algebra",
+      "discipline": "Mathematics",
+      "level": "Foundation → Advanced",
+      "icon": "grid",
+      "summary": "Vectors, matrices, and the geometry of transformations — the language underneath graphics, machine learning, and quantum mechanics.",
+      "layers": [
+        {
+          "layer": 1,
+          "title": "Vectors & Geometric Intuition",
+          "tier": "FOUNDATION",
+          "minutes": 18,
+          "objectives": [
+            "Add and scale vectors geometrically and algebraically",
+            "Compute dot products and interpret them as projection",
+            "Distinguish span from a single vector",
+            "Measure length with the Euclidean norm"
+          ],
+          "concepts": [
+            {
+              "term": "Vector",
+              "definition": "An ordered list of numbers representing a magnitude and direction in space; in n dimensions it is an element of ℝⁿ."
+            },
+            {
+              "term": "Linear combination",
+              "definition": "A sum c₁v₁ + c₂v₂ + … + cₙvₙ with scalar weights cᵢ. Nearly every idea in linear algebra is a statement about which combinations are possible."
+            },
+            {
+              "term": "Span",
+              "definition": "The set of all linear combinations of a collection of vectors — the reachable subspace. Two non-parallel vectors in ℝ² span the whole plane."
+            },
+            {
+              "term": "Dot product",
+              "definition": "u · v = Σ uᵢvᵢ = |u||v| cos θ. Zero means orthogonal; the sign reveals whether vectors point broadly together or apart."
+            }
+          ],
+          "intuition": "A vector is not an arrow in a picture; it is a recipe of coordinates. Addition is \"do both displacements\", scaling is \"do it more or less\". The dot product converts geometry into arithmetic: it measures how much of one vector lies along another, which is how projection, correlation, and attention scores all work.",
+          "worked": {
+            "problem": "For u = (3, −1) and v = (2, 4), compute u + v, 2u − v, and u · v.",
+            "steps": [
+              "Add componentwise: u + v = (3 + 2, −1 + 4) = (5, 3).",
+              "Scale then subtract: 2u = (6, −2), so 2u − v = (6 − 2, −2 − 4) = (4, −6).",
+              "Dot product: 3(2) + (−1)(4) = 6 − 4 = 2.",
+              "Since the dot product is non-zero, the vectors are not orthogonal."
+            ],
+            "answer": "u + v = (5, 3), 2u − v = (4, −6), u · v = 2"
+          },
+          "table": {
+            "caption": "Vector operations at a glance",
+            "head": [
+              "Operation",
+              "Formula",
+              "Geometric meaning"
+            ],
+            "rows": [
+              [
+                "Addition",
+                "(u₁+v₁, u₂+v₂)",
+                "Head-to-tail displacement"
+              ],
+              [
+                "Scaling",
+                "(cv₁, cv₂)",
+                "Stretch or flip direction"
+              ],
+              [
+                "Dot product",
+                "u₁v₁ + u₂v₂",
+                "Alignment and projection"
+              ],
+              [
+                "Norm",
+                "√(v₁² + v₂²)",
+                "Length of the vector"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  V[Vectors v₁ … vₙ] --> C[Linear combinations]\n  C --> S[Span]\n  S --> I{Independent?}\n  I -->|Yes| D[Full dimension]\n  I -->|No| H[Hidden redundancy]",
+          "pitfalls": [
+            "Adding vectors of different dimensions.",
+            "Confusing the dot product (a scalar) with scalar multiplication (a vector).",
+            "Assuming three vectors in ℝ² can span more than a plane — they cannot."
+          ],
+          "scenario": {
+            "q": "u = (1, 2) and v = (2, 4). What is their span?",
+            "options": [
+              "A line through the origin",
+              "All of ℝ²",
+              "Only the zero vector",
+              "A plane not through the origin"
+            ],
+            "answer": 0,
+            "why": "v = 2u, so the two vectors are parallel and every combination lands on the same line through the origin."
+          }
+        },
+        {
+          "layer": 2,
+          "title": "Matrices as Transformations",
+          "tier": "FOUNDATION",
+          "minutes": 22,
+          "objectives": [
+            "Multiply a matrix by a vector as a combination of columns",
+            "Recognise identity, rotation, scaling, and shear matrices",
+            "Compute determinants and interpret them as area scaling",
+            "Invert a 2×2 matrix and know when it fails"
+          ],
+          "concepts": [
+            {
+              "term": "Matrix",
+              "definition": "A rectangular array of numbers acting on vectors by linear transformation; an m×n matrix maps ℝⁿ to ℝᵐ."
+            },
+            {
+              "term": "Determinant (2×2)",
+              "definition": "det[[a, b], [c, d]] = ad − bc. Its absolute value is the area scale factor of the transformation; zero means the map collapses space and is not invertible."
+            },
+            {
+              "term": "Inverse matrix",
+              "definition": "A⁻¹ satisfies A⁻¹A = AA⁻¹ = I. For 2×2, A⁻¹ = (1/det A)[[d, −b], [−c, a]], and it exists only when det A ≠ 0."
+            },
+            {
+              "term": "Linear transformation",
+              "definition": "A map T with T(u + v) = T(u) + T(v) and T(cu) = cT(u). Every such map is multiplication by some matrix."
+            }
+          ],
+          "intuition": "A matrix is not a table of data — it is a machine that moves space. Columns tell you where the basis vectors land, and everything else follows by linearity. The determinant is the machine's volume dial: 2 doubles areas, 0 flattens the plane into a line, and a negative value means orientation was flipped.",
+          "worked": {
+            "problem": "Let A = [[2, 1], [1, 3]] and v = (1, 2). Compute Av and det A.",
+            "steps": [
+              "Treat the columns: col₁ = (2, 1), col₂ = (1, 3).",
+              "Av = 1·col₁ + 2·col₂ = (2, 1) + (2, 6) = (4, 7).",
+              "det A = (2)(3) − (1)(1) = 6 − 1 = 5.",
+              "A non-zero determinant means A is invertible and scales area by 5."
+            ],
+            "answer": "Av = (4, 7), det A = 5"
+          },
+          "table": {
+            "caption": "Common 2×2 transformations",
+            "head": [
+              "Matrix",
+              "Geometric effect",
+              "Determinant"
+            ],
+            "rows": [
+              [
+                "[[1,0],[0,1]]",
+                "Identity — no change",
+                "1"
+              ],
+              [
+                "[[2,0],[0,2]]",
+                "Uniform scale by 2",
+                "4"
+              ],
+              [
+                "[[cos, −sin],[sin, cos]]",
+                "Rotation by θ",
+                "1"
+              ],
+              [
+                "[[1,k],[0,1]]",
+                "Horizontal shear",
+                "1"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  X[Input vector v] --> M[Matrix A]\n  M --> Y[Output Av]\n  M --> D[det A]\n  D --> Z{det = 0?}\n  Z -->|Yes| C[Collapses space: no inverse]\n  Z -->|No| I[Invertible: A⁻¹ exists]",
+          "pitfalls": [
+            "Multiplying matrices in the wrong order — AB ≠ BA in general.",
+            "Assuming a matrix is invertible just because it is square.",
+            "Reading determinant as a slope rather than a signed area scale."
+          ],
+          "scenario": {
+            "q": "A = [[1, 2], [2, 4]]. What happens to the plane under A?",
+            "options": [
+              "It collapses onto a line because det A = 0",
+              "It stretches uniformly",
+              "It rotates by 90°",
+              "It reflects across y = x"
+            ],
+            "answer": 0,
+            "why": "det A = 1·4 − 2·2 = 0, so the columns are dependent and the image is one-dimensional."
+          }
+        },
+        {
+          "layer": 3,
+          "title": "Systems of Equations & Elimination",
+          "tier": "INTERMEDIATE",
+          "minutes": 24,
+          "objectives": [
+            "Translate a linear system into an augmented matrix",
+            "Reduce to row echelon form with legal row operations",
+            "Classify systems as unique, infinite, or inconsistent via rank",
+            "Read free variables as degrees of freedom"
+          ],
+          "concepts": [
+            {
+              "term": "Augmented matrix",
+              "definition": "The coefficient matrix with the constant column appended. Row operations on it correspond exactly to legal equation manipulations."
+            },
+            {
+              "term": "Row echelon form",
+              "definition": "A staircase pattern where each leading entry is right of the one above and rows of zeros sit at the bottom. Reached by Gaussian elimination."
+            },
+            {
+              "term": "Rank",
+              "definition": "The number of linearly independent rows (equivalently, pivots). It measures how much genuine information the system carries."
+            },
+            {
+              "term": "Free variable",
+              "definition": "A variable without a pivot column; it can be chosen freely, and each one adds a parameter to the solution set."
+            }
+          ],
+          "intuition": "Elimination is disciplined substitution: use one equation to kill a variable in the others, then repeat on the smaller system. Rank is the audit that tells you what survived — equal rows mean redundancy, a pivot in the constant column means contradiction. \"Infinite solutions\" is not a failure; it is a description of a line or plane of answers.",
+          "worked": {
+            "problem": "Solve x + y + z = 6, 2x − y + z = 3, x + 2y − z = 2.",
+            "steps": [
+              "Write the augmented matrix: [1 1 1 | 6; 2 −1 1 | 3; 1 2 −1 | 2].",
+              "R₂ − 2R₁ → [0 −3 −1 | −9]; R₃ − R₁ → [0 1 −2 | −4].",
+              "From R₃: y − 2z = −4, so y = 2z − 4.",
+              "From R₂: −3y − z = −9 → −3(2z − 4) − z = −9 → −7z + 12 = −9 → z = 3.",
+              "Then y = 2(3) − 4 = 2 and x = 6 − y − z = 1."
+            ],
+            "answer": "(x, y, z) = (1, 2, 3)"
+          },
+          "table": {
+            "caption": "Diagnosis from row echelon form",
+            "head": [
+              "Pattern",
+              "Rank test",
+              "Solution type"
+            ],
+            "rows": [
+              [
+                "Pivot in every variable column",
+                "rank(A) = n",
+                "Unique solution"
+              ],
+              [
+                "Some variable columns lack pivots",
+                "rank(A) < n, consistent",
+                "Infinitely many"
+              ],
+              [
+                "Row [0 0 0 | b] with b ≠ 0",
+                "rank(A) < rank([A|b])",
+                "No solution"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  S[Linear system] --> A[Augmented matrix]\n  A --> E[Gaussian elimination]\n  E --> R[Row echelon form]\n  R --> C{Contradiction row?}\n  C -->|Yes| N[No solution]\n  C -->|No| P{Pivot in every column?}\n  P -->|Yes| U[Unique solution]\n  P -->|No| I[Infinite family with parameters]",
+          "pitfalls": [
+            "Scaling a row by zero — that destroys information and is not a legal operation.",
+            "Stopping at echelon form and forgetting back-substitution.",
+            "Confusing \"more equations than unknowns\" with \"unique solution\"."
+          ],
+          "scenario": {
+            "q": "A 3×3 system reduces to rows [1 0 2 | 4], [0 1 −1 | 1], [0 0 0 | 0]. What is the solution set?",
+            "options": [
+              "A line with one free variable",
+              "A unique point",
+              "No solution",
+              "All of ℝ³"
+            ],
+            "answer": 0,
+            "why": "There are two pivots and no contradiction, so one variable (z) is free and the solution set is a line."
+          }
+        },
+        {
+          "layer": 4,
+          "title": "Vector Spaces & Eigenvalues",
+          "tier": "INTERMEDIATE",
+          "minutes": 28,
+          "objectives": [
+            "Test whether a set of vectors forms a basis",
+            "Compute null space and column space dimensions",
+            "Find eigenvalues and eigenvectors of a small matrix",
+            "Explain diagonalisation and when it is possible"
+          ],
+          "concepts": [
+            {
+              "term": "Basis",
+              "definition": "A set of vectors that both spans the space and is linearly independent; every vector has exactly one coordinate representation in that basis."
+            },
+            {
+              "term": "Null space",
+              "definition": "The set of vectors x with Ax = 0. Its dimension is the number of free variables and measures how much information A destroys."
+            },
+            {
+              "term": "Eigenvector",
+              "definition": "A non-zero vector v with Av = λv for some scalar λ. The transformation only stretches or flips it, never rotates it off its line."
+            },
+            {
+              "term": "Diagonalisation",
+              "definition": "Writing A = PDP⁻¹ where D is diagonal of eigenvalues and P holds eigenvectors. It is possible when there are enough independent eigenvectors."
+            }
+          ],
+          "intuition": "A basis is a coordinate system you choose, not one you are given. Changing basis can turn a tangled matrix into a diagonal one — the same transformation seen from its natural axes. Eigenvectors are those natural axes: directions the map respects. This is why page rank, vibration modes, and PCA all reduce to eigenproblems.",
+          "worked": {
+            "problem": "Find the eigenvalues of A = [[4, 1], [2, 3]].",
+            "steps": [
+              "Solve det(A − λI) = 0.",
+              "A − λI = [[4 − λ, 1], [2, 3 − λ]].",
+              "Determinant: (4 − λ)(3 − λ) − 2 = λ² − 7λ + 12 − 2 = λ² − 7λ + 10.",
+              "Factor: (λ − 5)(λ − 2) = 0.",
+              "Eigenvalues are λ = 5 and λ = 2; both real, so A is diagonalisable over ℝ."
+            ],
+            "answer": "λ = 5 and λ = 2"
+          },
+          "table": {
+            "caption": "The four fundamental subspaces at a glance",
+            "head": [
+              "Subspace",
+              "Definition",
+              "Dimension"
+            ],
+            "rows": [
+              [
+                "Column space",
+                "All outputs Ax",
+                "rank(A)"
+              ],
+              [
+                "Null space",
+                "All x with Ax = 0",
+                "n − rank(A)"
+              ],
+              [
+                "Row space",
+                "Span of rows",
+                "rank(A)"
+              ],
+              [
+                "Left null space",
+                "All y with Aᵀy = 0",
+                "m − rank(A)"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  A[Matrix A] --> C[Column space]\n  A --> N[Null space]\n  C --> R[Rank r]\n  N --> F[n − r free directions]\n  A --> E[Eigen equation Av = λv]\n  E --> D[Diagonalise A = PDP⁻¹]",
+          "pitfalls": [
+            "Including the zero vector as an eigenvector — it satisfies the equation but is excluded by definition.",
+            "Assuming every matrix is diagonalisable.",
+            "Confusing the dimension of the column space with the number of columns."
+          ],
+          "scenario": {
+            "q": "A 4×4 matrix has rank 3. What is the dimension of its null space?",
+            "options": [
+              "1",
+              "3",
+              "4",
+              "0"
+            ],
+            "answer": 0,
+            "why": "Rank-nullity: nullity = n − rank = 4 − 3 = 1."
+          }
+        },
+        {
+          "layer": 5,
+          "title": "Orthogonality, SVD & Applications",
+          "tier": "ADVANCED",
+          "minutes": 30,
+          "objectives": [
+            "Project a vector onto a subspace and derive least squares",
+            "Orthogonalise a basis with Gram–Schmidt",
+            "Interpret the singular value decomposition geometrically",
+            "Connect SVD to compression and principal components"
+          ],
+          "concepts": [
+            {
+              "term": "Orthogonal projection",
+              "definition": "The closest point in a subspace to a given vector: proj_u v = (v · u / u · u) u for a line spanned by u."
+            },
+            {
+              "term": "Least squares",
+              "definition": "When Ax = b has no exact solution, minimise ‖Ax − b‖². The optimum solves the normal equations AᵀAx = Aᵀb."
+            },
+            {
+              "term": "Gram–Schmidt",
+              "definition": "A procedure converting any independent set into an orthonormal basis by subtracting projections onto the vectors already built."
+            },
+            {
+              "term": "Singular value decomposition",
+              "definition": "A = UΣVᵀ for any matrix: rotate by Vᵀ, scale by Σ, rotate by U. Singular values are the stretch factors along principal axes."
+            }
+          ],
+          "intuition": "Orthogonality is the geometry of \"no interference\": components can be analysed one at a time. Projection is the best approximation in a subspace, which is exactly what least-squares regression does. SVD generalises eigenvectors to non-square matrices and ranks the directions of a dataset by importance — truncate the small singular values and you get compression and PCA.",
+          "worked": {
+            "problem": "Project v = (3, 4) onto the line spanned by u = (1, 0), then onto u = (1, 1).",
+            "steps": [
+              "Onto (1, 0): (v · u)/(u · u) = 3, so the projection is (3, 0).",
+              "Onto (1, 1): v · u = 3 + 4 = 7 and u · u = 2, so the coefficient is 3.5.",
+              "The projection is 3.5(1, 1) = (3.5, 3.5).",
+              "The residual (3, 4) − (3.5, 3.5) = (−0.5, 0.5) is orthogonal to (1, 1), confirming minimal distance."
+            ],
+            "answer": "(3, 0) onto the x-axis; (3.5, 3.5) onto y = x"
+          },
+          "table": {
+            "caption": "Decompositions and what they buy you",
+            "head": [
+              "Decomposition",
+              "Form",
+              "Best for"
+            ],
+            "rows": [
+              [
+                "LU",
+                "A = LU",
+                "Solving many systems with one matrix"
+              ],
+              [
+                "QR",
+                "A = QR",
+                "Stable least squares"
+              ],
+              [
+                "Eigen",
+                "A = PDP⁻¹",
+                "Repeated application, dynamics"
+              ],
+              [
+                "SVD",
+                "A = UΣVᵀ",
+                "Rank, compression, PCA, pseudoinverse"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  B[b vector] --> P[Project onto column space]\n  P --> R[Residual orthogonal]\n  R --> N[Normal equations AᵀAx = Aᵀb]\n  A[Matrix A] --> S[SVD A = UΣVᵀ]\n  S --> T[Keep top k singular values]\n  T --> C[Compression / PCA]",
+          "pitfalls": [
+            "Projecting onto a vector without dividing by u · u.",
+            "Forgetting to re-orthogonalise against all previous vectors in Gram–Schmidt.",
+            "Assuming singular values can be negative — they are non-negative by construction."
+          ],
+          "scenario": {
+            "q": "A 1000×1000 image matrix has only 20 significant singular values. What does that imply?",
+            "options": [
+              "It can be stored approximately with ~40,000 numbers instead of 1,000,000",
+              "It is not invertible",
+              "It must be symmetric",
+              "It has 20 zero eigenvalues"
+            ],
+            "answer": 0,
+            "why": "Rank-20 truncation stores 1000·20 (U) + 20 (Σ) + 20·1000 (Vᵀ) ≈ 40,020 values while preserving the dominant structure."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "data-structures",
+      "title": "Data Structures",
+      "discipline": "Computer Science",
+      "level": "Foundation → Advanced",
+      "icon": "tree",
+      "summary": "Arrays to union-find — how memory layout and invariants decide whether your program is instant or unusable at scale.",
+      "layers": [
+        {
+          "layer": 1,
+          "title": "Arrays, Strings & Complexity",
+          "tier": "FOUNDATION",
+          "minutes": 18,
+          "objectives": [
+            "Explain contiguous memory and constant-time indexing",
+            "Measure operations with big-O on realistic inputs",
+            "Distinguish worst case, average case, and amortised cost",
+            "Choose between a static array and a dynamic array"
+          ],
+          "concepts": [
+            {
+              "term": "Array",
+              "definition": "A contiguous block of equal-sized elements addressed by index. Because the address is base + index × size, access is O(1)."
+            },
+            {
+              "term": "Big-O notation",
+              "definition": "An upper bound on growth: f(n) = O(g(n)) means f grows no faster than a constant multiple of g for large n. It describes scaling, not seconds."
+            },
+            {
+              "term": "Amortised cost",
+              "definition": "The average cost per operation across a sequence. Dynamic array appends are O(1) amortised because resizing doubles capacity and happens geometrically rarely."
+            },
+            {
+              "term": "Cache locality",
+              "definition": "The performance benefit of accessing memory that is already in CPU cache. Sequential array scans beat pointer-chasing structures even at equal big-O."
+            }
+          ],
+          "intuition": "An array is fast because it is boring: fixed stride, no indirection, perfect for the prefetcher. Complexity analysis explains the wall you hit at scale, but constants and cache behaviour decide close races. Insert at the front of an array and every later element must shift — that O(n) is the price of contiguity.",
+          "worked": {
+            "problem": "A dynamic array holds 8 elements and doubles when full. How many total element copies occur across 16 appends starting from empty?",
+            "steps": [
+              "Resizes happen at capacities 1, 2, 4, 8, 16 while growing to 17 elements.",
+              "Copy counts: 1 + 2 + 4 + 8 + 16 = 31.",
+              "Total work for 17 appends is 31 copies plus 17 writes.",
+              "Copies per append ≈ 31/17 < 2, a constant — hence O(1) amortised."
+            ],
+            "answer": "31 copies for 17 appends: constant amortised overhead"
+          },
+          "table": {
+            "caption": "Dynamic array operations",
+            "head": [
+              "Operation",
+              "Cost",
+              "Why"
+            ],
+            "rows": [
+              [
+                "Index a[i]",
+                "O(1)",
+                "Direct address arithmetic"
+              ],
+              [
+                "Append",
+                "O(1) amortised",
+                "Occasional doubling"
+              ],
+              [
+                "Insert at front",
+                "O(n)",
+                "Shift every later element"
+              ],
+              [
+                "Search unsorted",
+                "O(n)",
+                "Must inspect each element"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  A[Append] --> F{Capacity full?}\n  F -->|No| W[Write at length, O(1)]\n  F -->|Yes| D[Allocate 2× capacity]\n  D --> C[Copy n elements, O(n)]\n  C --> W\n  W --> R[Amortised O(1)]",
+          "pitfalls": [
+            "Quoting big-O without constants when comparing two O(n) approaches.",
+            "Forgetting that deleting from the middle of an array is O(n).",
+            "Assuming string concatenation in a loop is free — it is often O(n²) overall."
+          ],
+          "scenario": {
+            "q": "You need 10⁶ lookups by integer key where keys are dense 0…10⁶. Which structure is best?",
+            "options": [
+              "Direct-indexed array",
+              "Balanced BST",
+              "Linked list",
+              "Hash table with chaining"
+            ],
+            "answer": 0,
+            "why": "Dense integer keys let you index directly: O(1) with no hashing, no pointers, and perfect cache locality."
+          }
+        },
+        {
+          "layer": 2,
+          "title": "Linked Lists, Stacks & Queues",
+          "tier": "FOUNDATION",
+          "minutes": 20,
+          "objectives": [
+            "Implement singly and doubly linked lists safely",
+            "Apply LIFO and FIFO disciplines to real problems",
+            "Recognise when a pointer structure beats an array",
+            "Detect a cycle with Floyd's algorithm"
+          ],
+          "concepts": [
+            {
+              "term": "Node",
+              "definition": "A record holding a value plus one or more references to other nodes. The structure lives in the links, not in contiguous memory."
+            },
+            {
+              "term": "Stack (LIFO)",
+              "definition": "A collection where the most recently pushed element is the first popped. Used for call frames, undo history, and depth-first traversal."
+            },
+            {
+              "term": "Queue (FIFO)",
+              "definition": "A collection where the earliest enqueued element is dequeued first. Used for scheduling, buffering, and breadth-first traversal."
+            },
+            {
+              "term": "Floyd's cycle detection",
+              "definition": "Move one pointer one step and another two steps; if they meet, a cycle exists. O(n) time, O(1) extra space."
+            }
+          ],
+          "intuition": "Arrays optimise for random access; linked structures optimise for splicing. If your workload is \"insert and delete at known positions\", pointers win. If it is \"scan and index\", arrays win. A stack is a discipline, not a data structure — you can build one on an array or a list, and the constraint is what makes reasoning about it easy.",
+          "worked": {
+            "problem": "Reverse a singly linked list in place.",
+            "steps": [
+              "Keep three pointers: prev = null, curr = head, next = null.",
+              "While curr exists: save next = curr.next.",
+              "Point curr.next = prev (reverse the link).",
+              "Advance prev = curr, curr = next.",
+              "When the loop ends, prev is the new head."
+            ],
+            "answer": "One pass, O(n) time, O(1) space, original links fully reversed"
+          },
+          "table": {
+            "caption": "Array versus linked list",
+            "head": [
+              "Operation",
+              "Array",
+              "Linked list"
+            ],
+            "rows": [
+              [
+                "Index i",
+                "O(1)",
+                "O(n)"
+              ],
+              [
+                "Insert at head",
+                "O(n)",
+                "O(1)"
+              ],
+              [
+                "Delete given node",
+                "O(n)",
+                "O(1) with a back-pointer"
+              ],
+              [
+                "Memory overhead",
+                "Low",
+                "One or two pointers per node"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  H[head] --> N1[\"7 | next\"]\n  N1 --> N2[\"4 | next\"]\n  N2 --> N3[\"9 | null\"]\n  N3 --> T[tail]\n  S[Stack: push/pop at head] -.-> H\n  Q[Queue: enqueue tail, dequeue head] -.-> H",
+          "pitfalls": [
+            "Losing the rest of the list by overwriting next before saving it.",
+            "Forgetting to update tail when the list becomes empty.",
+            "Using a linked list where cache-friendly iteration dominates — arrays usually win."
+          ],
+          "scenario": {
+            "q": "A browser needs \"back\" navigation with unlimited history. Which structure is the natural fit?",
+            "options": [
+              "Stack",
+              "Queue",
+              "Min-heap",
+              "Hash table"
+            ],
+            "answer": 0,
+            "why": "Back navigation is last-in-first-out: the most recently visited page is the first one you return to."
+          }
+        },
+        {
+          "layer": 3,
+          "title": "Hash Tables & Trees",
+          "tier": "INTERMEDIATE",
+          "minutes": 25,
+          "objectives": [
+            "Explain hashing, load factor, and collision resolution",
+            "Compare chaining with open addressing",
+            "Insert, search, and delete in a binary search tree",
+            "Choose an ordered structure when range queries matter"
+          ],
+          "concepts": [
+            {
+              "term": "Hash function",
+              "definition": "A deterministic map from keys to buckets that spreads keys uniformly. A good hash is fast, stable within a run, and avalanche-sensitive."
+            },
+            {
+              "term": "Load factor",
+              "definition": "Entries divided by buckets. As it approaches 1, collisions and probe lengths explode, so tables resize (usually doubling) around 0.7."
+            },
+            {
+              "term": "Binary search tree (BST)",
+              "definition": "A tree where every left descendant is smaller and every right descendant larger than the node. Search, insert, and delete are O(h) for height h — O(log n) only when balanced."
+            },
+            {
+              "term": "Tree traversal",
+              "definition": "In-order (left, node, right) yields sorted output for a BST; pre-order and post-order suit serialisation and deletion respectively."
+            }
+          ],
+          "intuition": "Hashing trades order for speed: find a key in roughly one step, but lose any notion of \"next\". Trees keep order at the cost of a logarithmic walk. That trade-off decides architecture: a session cache is a hash table, a range query over timestamps is a tree. Never assume a BST is balanced — a sorted insertion order degenerates it into a linked list.",
+          "worked": {
+            "problem": "Insert 50, 30, 70, 20, 40, 60, 80 into an empty BST, then list an in-order traversal.",
+            "steps": [
+              "50 becomes the root.",
+              "30 < 50 goes left; 70 > 50 goes right.",
+              "20 < 50, < 30 → left of 30. 40 < 50, > 30 → right of 30.",
+              "60 > 50, < 70 → left of 70. 80 > 50, > 70 → right of 70.",
+              "In-order traversal visits left subtree, node, right subtree at every level.",
+              "Result is fully sorted because of the BST invariant."
+            ],
+            "answer": "In-order: 20, 30, 40, 50, 60, 70, 80 — a perfectly balanced tree of height 3"
+          },
+          "table": {
+            "caption": "Hash table versus balanced BST",
+            "head": [
+              "Requirement",
+              "Hash table",
+              "Balanced BST"
+            ],
+            "rows": [
+              [
+                "Exact lookup",
+                "O(1) average",
+                "O(log n)"
+              ],
+              [
+                "Sorted iteration",
+                "Not supported",
+                "O(n) in-order"
+              ],
+              [
+                "Range query",
+                "O(n) scan",
+                "O(log n + k)"
+              ],
+              [
+                "Worst case",
+                "O(n) with bad hashing",
+                "O(log n) guaranteed"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  K[Key] --> H[hash(key) % buckets]\n  H --> B[Bucket index]\n  B --> C{Collision?}\n  C -->|No| S[Store entry]\n  C -->|Yes| R[Chain or probe]\n  R --> L{Load factor > 0.7?}\n  L -->|Yes| G[Resize and rehash]\n  L -->|No| S",
+          "pitfalls": [
+            "Using a mutable object as a key and then mutating it, making the entry unreachable.",
+            "Assuming O(1) hash lookups without controlling hash quality and load factor.",
+            "Deleting from a BST by simply replacing the node, orphaning subtrees."
+          ],
+          "scenario": {
+            "q": "You need to fetch the 20 most recent events for a user by timestamp. What fits best?",
+            "options": [
+              "A balanced BST keyed by timestamp, or an index ordered by time",
+              "A hash table keyed by event id",
+              "A stack of events",
+              "A min-heap keyed by random id"
+            ],
+            "answer": 0,
+            "why": "The query is a range/order query, which needs an ordered structure; hashing destroys the ordering."
+          }
+        },
+        {
+          "layer": 4,
+          "title": "Heaps, Tries & Graphs",
+          "tier": "INTERMEDIATE",
+          "minutes": 28,
+          "objectives": [
+            "Maintain heap order for priority queues",
+            "Use a trie for prefix queries",
+            "Represent graphs with adjacency lists and matrices",
+            "Traverse graphs with BFS and DFS and explain when each is right"
+          ],
+          "concepts": [
+            {
+              "term": "Heap invariant",
+              "definition": "In a min-heap every parent is ≤ its children, so the minimum is at the root. Push and pop are O(log n); building from an array is O(n)."
+            },
+            {
+              "term": "Trie",
+              "definition": "A tree of characters where each path from the root spells a prefix. Lookup costs O(key length), independent of how many keys are stored."
+            },
+            {
+              "term": "Adjacency list",
+              "definition": "An array of neighbours per vertex, using O(V + E) space. Preferred for sparse graphs; adjacency matrices cost O(V²) but answer edge queries in O(1)."
+            },
+            {
+              "term": "BFS vs DFS",
+              "definition": "Breadth-first explores level by level and finds shortest paths in unweighted graphs; depth-first dives along one branch and is natural for cycle detection, topological ordering, and backtracking."
+            }
+          ],
+          "intuition": "Each structure encodes one question. A heap answers \"what is most urgent?\" without sorting everything. A trie answers \"what starts with this prefix?\" without scanning keys. A graph representation answers \"who is adjacent?\" and the traversal order then determines whether you learn distances (BFS) or structure and reachability (DFS).",
+          "worked": {
+            "problem": "Insert 5, 3, 8, 1 into a min-heap (array representation) and show the array after each insertion.",
+            "steps": [
+              "Insert 5 → [5].",
+              "Insert 3 → [5, 3], sift up: parent 5 > 3, swap → [3, 5].",
+              "Insert 8 → [3, 5, 8], parent 5 < 8 so stop.",
+              "Insert 1 → [3, 5, 8, 1], parent at index 1 is 5 > 1, swap → [3, 1, 8, 5].",
+              "New parent at index 0 is 3 > 1, swap → [1, 3, 8, 5].",
+              "Root is now the minimum and every parent ≤ children."
+            ],
+            "answer": "[1, 3, 8, 5] with the minimum at index 0"
+          },
+          "table": {
+            "caption": "Structure → question it answers",
+            "head": [
+              "Structure",
+              "Key operation",
+              "Cost"
+            ],
+            "rows": [
+              [
+                "Min-heap",
+                "Extract minimum",
+                "O(log n)"
+              ],
+              [
+                "Trie",
+                "Prefix lookup",
+                "O(length of key)"
+              ],
+              [
+                "Adjacency list",
+                "Neighbours of v",
+                "O(degree(v))"
+              ],
+              [
+                "Adjacency matrix",
+                "Is (u, v) an edge?",
+                "O(1)"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  G[Graph problem] --> W{Weighted?}\n  W -->|No, shortest hops| B[BFS with queue]\n  W -->|Yes| D[Dijkstra with heap]\n  G --> R{Structure or reachability?}\n  R -->|Yes| F[DFS with recursion/stack]\n  G --> P{Prefix matching?}\n  P -->|Yes| T[Trie]",
+          "pitfalls": [
+            "Using a heap when you need full sorted order — a heap only guarantees the root.",
+            "Storing a trie with per-node hash maps when a dense alphabet array would be faster.",
+            "Running BFS with a stack (that is DFS) and then expecting shortest paths."
+          ],
+          "scenario": {
+            "q": "A task scheduler must always run the highest-priority task next, with tasks arriving continuously. What do you use?",
+            "options": [
+              "Binary heap (priority queue)",
+              "Hash table",
+              "Trie",
+              "Sorted linked list"
+            ],
+            "answer": 0,
+            "why": "A heap gives O(log n) insertion and O(log n) extraction of the maximum, which is exactly the required access pattern."
+          }
+        },
+        {
+          "layer": 5,
+          "title": "Advanced Structures & Trade-offs",
+          "tier": "ADVANCED",
+          "minutes": 30,
+          "objectives": [
+            "Apply union-find with path compression and union by rank",
+            "Answer range queries with a segment tree",
+            "Explain why balanced trees guarantee logarithmic height",
+            "Reason about persistence, concurrency, and cache behaviour"
+          ],
+          "concepts": [
+            {
+              "term": "Union-find (DSU)",
+              "definition": "Tracks disjoint sets with find and union. With path compression and union by rank, operations run in near-constant amortised time, O(α(n))."
+            },
+            {
+              "term": "Segment tree",
+              "definition": "A tree over array ranges storing an aggregate per node. Point updates and range queries are O(log n); it is the standard tool for range sums, minima, and maxima."
+            },
+            {
+              "term": "Balanced tree (AVL / red-black)",
+              "definition": "A BST that rebalances after each mutation to keep height O(log n). Red-black trees allow looser balance for fewer rotations, which is why standard libraries prefer them."
+            },
+            {
+              "term": "Persistent structure",
+              "definition": "A structure where updates return a new version sharing most nodes with the old one, enabling time-travel queries and cheap snapshots."
+            }
+          ],
+          "intuition": "At the frontier, data-structure engineering is about amortising and sharing. Union-find flattens paths so future finds are cheaper; segment trees trade O(n) extra memory for logarithmic range answers; persistence trades pointer indirection for immutable history. The right answer usually follows from the exact mix of reads, writes, and queries — there is no universally best structure.",
+          "worked": {
+            "problem": "Build a segment tree over [2, 4, 6, 8] for range sums and query the sum over indices 1…2.",
+            "steps": [
+              "Leaves hold 2, 4, 6, 8.",
+              "First level combines pairs: [2+4=6] and [6+8=14].",
+              "Root holds 6 + 14 = 20.",
+              "Query indices 1…2 straddles both halves: index 1 belongs to the left child, index 2 to the right child.",
+              "Descend both sides, read leaf 4 and leaf 6, and combine them: 4 + 6 = 10.",
+              "Only O(log n) nodes are visited, and the parent sums are reused for wider ranges."
+            ],
+            "answer": "10 in O(log n) by visiting only the covering nodes"
+          },
+          "table": {
+            "caption": "Advanced structures and their guarantees",
+            "head": [
+              "Structure",
+              "Build",
+              "Query",
+              "Update"
+            ],
+            "rows": [
+              [
+                "Union-find",
+                "O(n)",
+                "O(α(n))",
+                "O(α(n)) union"
+              ],
+              [
+                "Segment tree",
+                "O(n)",
+                "O(log n)",
+                "O(log n)"
+              ],
+              [
+                "Red-black tree",
+                "O(n log n)",
+                "O(log n)",
+                "O(log n)"
+              ],
+              [
+                "Fenwick tree",
+                "O(n)",
+                "O(log n) prefix",
+                "O(log n) point"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  Q[Query workload] --> R{Range aggregate?}\n  R -->|Yes| S[Segment / Fenwick tree]\n  R -->|No| C[Connectivity?]\n  C -->|Yes| U[Union-find]\n  C -->|No| O[Ordered map]\n  O --> B[Balanced BST / B-tree]",
+          "pitfalls": [
+            "Using union-find without path compression and then wondering why finds degrade.",
+            "Forgetting that a segment tree needs a merge operation that is associative.",
+            "Choosing a persistent structure for a write-heavy workload and paying allocation costs."
+          ],
+          "scenario": {
+            "q": "You process 10⁶ edges in a graph and repeatedly ask whether two nodes are connected. Best structure?",
+            "options": [
+              "Union-find with path compression",
+              "Adjacency matrix plus DFS per query",
+              "Balanced BST of edges",
+              "Trie of node ids"
+            ],
+            "answer": 0,
+            "why": "Dynamic connectivity is exactly the union-find problem; near-constant amortised operations beat repeated traversals."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "algorithms",
+      "title": "Algorithms",
+      "discipline": "Computer Science",
+      "level": "Foundation → Advanced",
+      "icon": "route",
+      "summary": "Correctness proofs, sorting, dynamic programming, graph algorithms, and the limits of tractability.",
+      "layers": [
+        {
+          "layer": 1,
+          "title": "Correctness & Growth",
+          "tier": "FOUNDATION",
+          "minutes": 18,
+          "objectives": [
+            "State a loop invariant and use it to prove correctness",
+            "Compare functions with asymptotic notation",
+            "Set up a recurrence for a recursive algorithm",
+            "Distinguish upper bounds from tight bounds"
+          ],
+          "concepts": [
+            {
+              "term": "Loop invariant",
+              "definition": "A property true before and after every iteration. Initialisation, maintenance, and termination together prove the loop computes the intended result."
+            },
+            {
+              "term": "Recurrence",
+              "definition": "An equation defining a function in terms of smaller inputs, e.g. T(n) = 2T(n/2) + n for merge sort."
+            },
+            {
+              "term": "Θ (tight bound)",
+              "definition": "f = Θ(g) when f is both O(g) and Ω(g): the growth rates match up to constants. Big-O alone only promises \"no worse than\"."
+            },
+            {
+              "term": "Master theorem",
+              "definition": "Solves T(n) = aT(n/b) + f(n) by comparing f(n) with n^(log_b a): the larger term dominates, with a logarithmic factor when they tie."
+            }
+          ],
+          "intuition": "An algorithm is a claim plus a proof. The claim is \"this returns the right answer in this much time\"; the proof is an invariant or a recurrence. Complexity notation is deliberately coarse because constants depend on hardware while growth decides whether the program survives a 100× larger input.",
+          "worked": {
+            "problem": "Prove that binary search finds a target in a sorted array.",
+            "steps": [
+              "Invariant: if the target exists, it lies within [lo, hi].",
+              "Initialisation: lo = 0, hi = n − 1 covers the whole array, so the invariant holds.",
+              "Maintenance: compare with the midpoint; discarding the half that cannot contain the target preserves the invariant.",
+              "Termination: each step halves the range, so it becomes empty after ⌈log₂ n⌉ steps.",
+              "If the range is empty and nothing matched, the target was never present — the invariant guarantees that conclusion."
+            ],
+            "answer": "Correct by invariant; Θ(log n) comparisons"
+          },
+          "table": {
+            "caption": "Growth rates you will meet constantly",
+            "head": [
+              "Notation",
+              "Name",
+              "n = 10⁶ feasibility"
+            ],
+            "rows": [
+              [
+                "O(1)",
+                "Constant",
+                "Instant"
+              ],
+              [
+                "O(log n)",
+                "Logarithmic",
+                "20 steps"
+              ],
+              [
+                "O(n log n)",
+                "Linearithmic",
+                "Fine (sorting)"
+              ],
+              [
+                "O(n²)",
+                "Quadratic",
+                "Too slow beyond ~10⁴"
+              ],
+              [
+                "O(2ⁿ)",
+                "Exponential",
+                "Only tiny n"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  C[Claim] --> I[Invariant or recurrence]\n  I --> B[Base case]\n  B --> S[Inductive step]\n  S --> T[Termination]\n  T --> R[Complexity bound]",
+          "pitfalls": [
+            "Confusing O with Θ and calling a loose upper bound tight.",
+            "Writing an invariant that is not actually preserved by the loop body.",
+            "Ignoring the base case in a recursive proof."
+          ],
+          "scenario": {
+            "q": "T(n) = 2T(n/2) + n. What is the tight bound?",
+            "options": [
+              "Θ(n log n)",
+              "Θ(n)",
+              "Θ(n²)",
+              "Θ(log n)"
+            ],
+            "answer": 0,
+            "why": "a = 2, b = 2 gives n^(log₂2) = n, which matches f(n) = n, so the master theorem contributes an extra log factor: Θ(n log n)."
+          }
+        },
+        {
+          "layer": 2,
+          "title": "Sorting & Searching",
+          "tier": "FOUNDATION",
+          "minutes": 20,
+          "objectives": [
+            "Trace merge sort and quicksort on a small array",
+            "Explain why comparison sorting is Ω(n log n)",
+            "Implement binary search over the answer space",
+            "Choose a stable sort when order of equals matters"
+          ],
+          "concepts": [
+            {
+              "term": "Stability",
+              "definition": "A sort is stable when equal keys keep their original relative order. Essential when sorting by one field after another."
+            },
+            {
+              "term": "Divide and conquer",
+              "definition": "Split the problem, solve the parts recursively, then combine. Merge sort splits by position; quicksort splits by pivot value."
+            },
+            {
+              "term": "Partition",
+              "definition": "Quicksort's core step: rearrange so elements left of the pivot are smaller and those right are larger, in linear time and in place."
+            },
+            {
+              "term": "Binary search on the answer",
+              "definition": "When a predicate is monotone in a numeric answer, binary search the value range even without an array — e.g. the minimum ship capacity to deliver in D days."
+            }
+          ],
+          "intuition": "Sorting is the canonical divide-and-conquer exercise, but the real lesson is about information: each comparison yields one bit, and n! orderings need log₂(n!) ≈ n log n bits, so no comparison sort can beat that. Binary search is the same idea applied to a monotone predicate rather than a list.",
+          "worked": {
+            "problem": "Trace merge sort on [5, 2, 9, 1].",
+            "steps": [
+              "Split into [5, 2] and [9, 1].",
+              "Split again into [5], [2], [9], [1].",
+              "Merge [5] and [2] → [2, 5].",
+              "Merge [9] and [1] → [1, 9].",
+              "Merge [2, 5] and [1, 9]: take 1, then 2, then 5, then 9 → [1, 2, 5, 9]."
+            ],
+            "answer": "[1, 2, 5, 9] with log₂4 = 2 levels of merges"
+          },
+          "table": {
+            "caption": "Sorting algorithms compared",
+            "head": [
+              "Algorithm",
+              "Average",
+              "Worst",
+              "Stable",
+              "In place"
+            ],
+            "rows": [
+              [
+                "Merge sort",
+                "O(n log n)",
+                "O(n log n)",
+                "Yes",
+                "No"
+              ],
+              [
+                "Quicksort",
+                "O(n log n)",
+                "O(n²)",
+                "No",
+                "Yes"
+              ],
+              [
+                "Heapsort",
+                "O(n log n)",
+                "O(n log n)",
+                "No",
+                "Yes"
+              ],
+              [
+                "Insertion sort",
+                "O(n²)",
+                "O(n²)",
+                "Yes",
+                "Yes"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  A[\"[5,2,9,1]\"] --> L[\"[5,2]\"]\n  A --> R[\"[9,1]\"]\n  L --> L1[\"[5]\"]\n  L --> L2[\"[2]\"]\n  R --> R1[\"[9]\"]\n  R --> R2[\"[1]\"]\n  L1 --> M1[\"[2,5]\"]\n  L2 --> M1\n  R1 --> M2[\"[1,9]\"]\n  R2 --> M2\n  M1 --> M[\"[1,2,5,9]\"]\n  M2 --> M",
+          "pitfalls": [
+            "Assuming quicksort is always faster — on adversarial or sorted input with a bad pivot it degrades.",
+            "Using an unstable sort for multi-key ordering.",
+            "Writing binary search with an off-by-one that skips the last element."
+          ],
+          "scenario": {
+            "q": "You must sort 10⁷ customer records by last name, then by first name. Which is correct?",
+            "options": [
+              "Sort by first name, then stably by last name",
+              "Sort by last name only",
+              "Sort by last name, then unstably by first name",
+              "Use quicksort twice"
+            ],
+            "answer": 0,
+            "why": "Sorting by the secondary key first and then stably by the primary key preserves the secondary order within equal primary keys."
+          }
+        },
+        {
+          "layer": 3,
+          "title": "Greedy & Dynamic Programming",
+          "tier": "INTERMEDIATE",
+          "minutes": 26,
+          "objectives": [
+            "Identify optimal substructure and overlapping subproblems",
+            "Prove a greedy choice is safe or find a counterexample",
+            "Choose between memoisation and tabulation",
+            "Reconstruct a solution from a DP table"
+          ],
+          "concepts": [
+            {
+              "term": "Greedy choice property",
+              "definition": "A locally best choice can be part of some global optimum. Interval scheduling has it; 0/1 knapsack does not."
+            },
+            {
+              "term": "Optimal substructure",
+              "definition": "An optimal solution contains optimal solutions to subproblems, which is what makes recursion on subproblems valid."
+            },
+            {
+              "term": "Memoisation",
+              "definition": "Top-down recursion that caches results per state. Easy to write from the recurrence; risks stack depth."
+            },
+            {
+              "term": "Tabulation",
+              "definition": "Bottom-up filling of a table in dependency order. No recursion overhead and allows space optimisation to the last row."
+            }
+          ],
+          "intuition": "Greedy says \"commit now and never look back\" — fast, but only valid if you can prove exchange arguments. DP says \"consider every state once and remember\" — slower but robust. Recognise DP when the same subproblem appears in multiple branches; that overlap is what makes caching worth it.",
+          "worked": {
+            "problem": "Find the longest common subsequence of \"ABCBDAB\" and \"BDCABA\".",
+            "steps": [
+              "Define dp[i][j] = LCS length of the first i and first j characters.",
+              "If characters match: dp[i][j] = dp[i−1][j−1] + 1.",
+              "Otherwise: dp[i][j] = max(dp[i−1][j], dp[i][j−1]).",
+              "Fill row by row; the bottom-right cell gives the length.",
+              "Backtrack from the bottom-right, moving diagonally on matches, to recover the string."
+            ],
+            "answer": "LCS length 4, for example \"BCBA\""
+          },
+          "table": {
+            "caption": "Greedy works versus greedy fails",
+            "head": [
+              "Problem",
+              "Greedy valid?",
+              "Why"
+            ],
+            "rows": [
+              [
+                "Interval scheduling",
+                "Yes",
+                "Earliest finish time exchange argument"
+              ],
+              [
+                "Huffman coding",
+                "Yes",
+                "Two least frequent leaves can always be siblings"
+              ],
+              [
+                "0/1 knapsack",
+                "No",
+                "Best ratio item can block a better combination"
+              ],
+              [
+                "Coin change (arbitrary coins)",
+                "No",
+                "Greedy misses optimal combinations"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  P[Problem] --> O{Overlapping subproblems?}\n  O -->|No| G[Try greedy + exchange proof]\n  O -->|Yes| S[Define state]\n  S --> R[Write recurrence]\n  R --> M{Recursion depth safe?}\n  M -->|Yes| T[Memoise top-down]\n  M -->|No| B[Tabulate bottom-up]\n  B --> X[Optimise space]\n  T --> X",
+          "pitfalls": [
+            "Assuming greedy is correct because it passes the sample tests — construct a counterexample instead.",
+            "Defining a DP state that omits information needed to make future decisions.",
+            "Forgetting to reconstruct the path when the answer requires the solution, not just its value."
+          ],
+          "scenario": {
+            "q": "Which problem is guaranteed solvable optimally by a greedy algorithm?",
+            "options": [
+              "Selecting the maximum number of non-overlapping intervals",
+              "0/1 knapsack with arbitrary weights",
+              "Longest common subsequence",
+              "Minimum coins for arbitrary denominations"
+            ],
+            "answer": 0,
+            "why": "Choosing the interval with the earliest finishing time is provably safe by an exchange argument; the others need DP."
+          }
+        },
+        {
+          "layer": 4,
+          "title": "Graph Algorithms",
+          "tier": "INTERMEDIATE",
+          "minutes": 28,
+          "objectives": [
+            "Run Dijkstra with a priority queue and justify each step",
+            "Detect cycles and topologically sort a DAG",
+            "Build a minimum spanning tree with Kruskal or Prim",
+            "Choose the right algorithm from edge weights and graph shape"
+          ],
+          "concepts": [
+            {
+              "term": "Dijkstra's algorithm",
+              "definition": "Greedily settles the closest unsettled vertex, relaxing its edges. Correct for non-negative weights; O((V + E) log V) with a binary heap."
+            },
+            {
+              "term": "Topological sort",
+              "definition": "A linear ordering of a DAG where every edge points forward. Produced by DFS post-order reversal or Kahn's in-degree peeling."
+            },
+            {
+              "term": "Minimum spanning tree",
+              "definition": "A subset of edges connecting all vertices with minimum total weight and no cycles. Kruskal sorts edges; Prim grows a tree from one vertex."
+            },
+            {
+              "term": "Relaxation",
+              "definition": "Updating dist[v] to dist[u] + w(u, v) when that is smaller. Every shortest-path algorithm is a different relaxation order."
+            }
+          ],
+          "intuition": "Graph algorithms differ mainly in the order they settle vertices. Dijkstra settles by best-known distance (valid only when no negative edges), BFS by hop count, Bellman-Ford by repeated passes. Topological order turns a dependency graph into a schedule; MST connects everything as cheaply as possible without caring about the route between any pair.",
+          "worked": {
+            "problem": "Run Dijkstra from A with edges A–B (4), A–C (1), C–B (2), B–D (5), C–D (8).",
+            "steps": [
+              "dist: A=0, others ∞. Settle A.",
+              "Relax: B=4, C=1. Next settle C (1).",
+              "Relax C→B: 1 + 2 = 3 < 4, so B=3. C→D: 1 + 8 = 9.",
+              "Settle B (3). Relax B→D: 3 + 5 = 8 < 9, so D=8.",
+              "Settle D (8). Final distances: A 0, C 1, B 3, D 8."
+            ],
+            "answer": "dist = {A: 0, B: 3, C: 1, D: 8}"
+          },
+          "table": {
+            "caption": "Shortest path algorithm selection",
+            "head": [
+              "Setting",
+              "Algorithm",
+              "Complexity"
+            ],
+            "rows": [
+              [
+                "Unweighted",
+                "BFS",
+                "O(V + E)"
+              ],
+              [
+                "Non-negative weights",
+                "Dijkstra",
+                "O((V + E) log V)"
+              ],
+              [
+                "Negative edges, no negative cycle",
+                "Bellman-Ford",
+                "O(VE)"
+              ],
+              [
+                "All pairs, dense",
+                "Floyd-Warshall",
+                "O(V³)"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  S[Source] --> Q[Priority queue dist = 0]\n  Q --> U[Pop minimum unsettled]\n  U --> R[Relax outgoing edges]\n  R --> P{Improved a distance?}\n  P -->|Yes| Q\n  P -->|No| N{Queue empty?}\n  N -->|No| Q\n  N -->|Yes| D[Distances final]",
+          "pitfalls": [
+            "Running Dijkstra with negative edge weights, where a settled vertex can later improve.",
+            "Forgetting the visited set and re-processing vertices forever.",
+            "Confusing MST total weight with shortest-path distance in the same graph."
+          ],
+          "scenario": {
+            "q": "A build system must order 500 packages so dependencies compile first, and the graph has no cycles. Which algorithm?",
+            "options": [
+              "Topological sort",
+              "Dijkstra",
+              "Kruskal",
+              "Floyd-Warshall"
+            ],
+            "answer": 0,
+            "why": "Dependency ordering on a DAG is exactly topological sorting; cycles indicate an impossible build."
+          }
+        },
+        {
+          "layer": 5,
+          "title": "Hardness & Approximation",
+          "tier": "ADVANCED",
+          "minutes": 30,
+          "objectives": [
+            "Distinguish P, NP, and NP-complete",
+            "Use a reduction to prove a problem is hard",
+            "Design and bound an approximation algorithm",
+            "Apply branch-and-bound or heuristics responsibly"
+          ],
+          "concepts": [
+            {
+              "term": "Polynomial-time reduction",
+              "definition": "A polynomial transformation from problem A to B such that solving B solves A. It transfers hardness: if A is hard and A ≤ₚ B, then B is hard."
+            },
+            {
+              "term": "NP-complete",
+              "definition": "A problem in NP to which every NP problem reduces. A polynomial solution to any one of them would solve all of them."
+            },
+            {
+              "term": "Approximation ratio",
+              "definition": "For minimisation, the worst-case ratio ALG/OPT over all instances. A 2-approximation guarantees the answer is never more than twice optimal."
+            },
+            {
+              "term": "Branch and bound",
+              "definition": "Exact search with pruning: maintain a best-known solution and discard branches whose optimistic bound cannot beat it."
+            }
+          ],
+          "intuition": "Not every problem has a fast exact algorithm, and pretending otherwise ships products that hang. The professional move is to classify the problem, then choose: exact for small instances, approximation with a proven ratio, or a heuristic with honest measured performance. Reductions are how you classify — you do not need to reinvent the hardness proof.",
+          "worked": {
+            "problem": "Show that the 2-approximation greedy for vertex cover is valid.",
+            "steps": [
+              "Algorithm: repeatedly pick an uncovered edge (u, v), add both endpoints, mark all their edges covered.",
+              "The picked edges form a matching: no two share an endpoint, because shared endpoints would already be covered.",
+              "Any valid cover must contain at least one endpoint per matching edge, so OPT ≥ |matching|.",
+              "The algorithm adds both endpoints of each matching edge, so ALG = 2|matching|.",
+              "Therefore ALG ≤ 2·OPT: a factor-2 guarantee."
+            ],
+            "answer": "Every chosen edge needs a distinct cover vertex, so ALG = 2|M| ≤ 2·OPT"
+          },
+          "table": {
+            "caption": "Coping strategies for hard problems",
+            "head": [
+              "Strategy",
+              "Guarantee",
+              "Good when"
+            ],
+            "rows": [
+              [
+                "Exact DP",
+                "Optimal",
+                "State space is small"
+              ],
+              [
+                "Branch and bound",
+                "Optimal",
+                "Bounds prune most branches"
+              ],
+              [
+                "Approximation",
+                "Proven ratio",
+                "A near-answer is acceptable"
+              ],
+              [
+                "Heuristic / local search",
+                "None, empirical",
+                "Instances are huge and typical"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  P[New problem] --> A{Polynomial algorithm known?}\n  A -->|Yes| E[Use it]\n  A -->|No| R[Reduce from a known NP-complete problem]\n  R --> H{Hard?}\n  H -->|No| E\n  H -->|Yes| S{Instance size?}\n  S -->|Small| X[Exact: DP / branch and bound]\n  S -->|Large| Y[Approximation with ratio]\n  Y --> Z[Measure and document quality]",
+          "pitfalls": [
+            "Calling a problem NP-hard without a reduction, which is a guess rather than a proof.",
+            "Reporting a heuristic as if it were optimal.",
+            "Ignoring input structure that makes an exponential algorithm fine in practice."
+          ],
+          "scenario": {
+            "q": "A 2-approximation returns cost 30 on an instance. What can you conclude about OPT?",
+            "options": [
+              "OPT ≥ 15",
+              "OPT = 15",
+              "OPT ≤ 15",
+              "Nothing without more information"
+            ],
+            "answer": 0,
+            "why": "For minimisation, ALG ≤ 2·OPT implies OPT ≥ ALG/2 = 15; the true optimum could be anywhere from 15 to 30."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "operating-systems",
+      "title": "Operating Systems",
+      "discipline": "Computer Science",
+      "level": "Foundation → Advanced",
+      "icon": "cpu",
+      "summary": "Processes, scheduling, virtual memory, file systems, and the isolation machinery behind every container you deploy.",
+      "layers": [
+        {
+          "layer": 1,
+          "title": "Processes & Program Execution",
+          "tier": "FOUNDATION",
+          "minutes": 18,
+          "objectives": [
+            "Describe what a process owns that a program does not",
+            "Trace fork, exec, and wait through a shell command",
+            "Explain a context switch and its cost",
+            "Identify the states in a process lifecycle"
+          ],
+          "concepts": [
+            {
+              "term": "Process",
+              "definition": "A running instance of a program with its own address space, registers, open file descriptors, and kernel bookkeeping."
+            },
+            {
+              "term": "Process control block (PCB)",
+              "definition": "The kernel structure storing a process's state: registers, program counter, scheduling info, memory maps, and descriptor tables."
+            },
+            {
+              "term": "fork / exec",
+              "definition": "fork() clones the current process (copy-on-write); exec() replaces the image with a new program. Together they implement launching a command."
+            },
+            {
+              "term": "Context switch",
+              "definition": "Saving one process's registers and restoring another's. Costs microseconds and pollutes caches, so schedulers avoid gratuitous switches."
+            }
+          ],
+          "intuition": "A program is a file; a process is a claim on the machine. The kernel multiplexes many claims onto few CPUs by switching rapidly, which creates the illusion of simultaneity. fork+exec is a deliberate two-step design: the child can adjust (redirect descriptors, drop privileges) before becoming the target program.",
+          "worked": {
+            "problem": "A shell runs `wc -l < notes.txt`. Describe the system calls.",
+            "steps": [
+              "The shell forks; the child receives a duplicate of the shell's memory image.",
+              "The child opens notes.txt read-only and dup2()s the descriptor onto stdin.",
+              "The child calls execvp(\"wc\", [\"wc\", \"-l\"]), replacing its image with wc.",
+              "wc reads stdin to EOF, prints the count, and exits.",
+              "The shell wait()s, reaps the exit status, and prints the next prompt."
+            ],
+            "answer": "fork → open/dup2 → exec → exit → wait"
+          },
+          "table": {
+            "caption": "Process states",
+            "head": [
+              "State",
+              "Meaning",
+              "Typical transition"
+            ],
+            "rows": [
+              [
+                "New",
+                "Being created",
+                "→ Ready after admission"
+              ],
+              [
+                "Ready",
+                "Runnable, awaiting CPU",
+                "→ Running on dispatch"
+              ],
+              [
+                "Running",
+                "Executing on a core",
+                "→ Ready on preemption, → Blocked on I/O"
+              ],
+              [
+                "Blocked",
+                "Waiting on an event",
+                "→ Ready when the event fires"
+              ],
+              [
+                "Terminated",
+                "Exited, awaiting reaping",
+                "Zombie until wait()"
+              ]
+            ]
+          },
+          "diagram": "stateDiagram-v2\n  [*] --> New\n  New --> Ready\n  Ready --> Running\n  Running --> Ready: preempted\n  Running --> Blocked: I/O wait\n  Blocked --> Ready: I/O complete\n  Running --> Terminated: exit\n  Terminated --> [*]: reaped",
+          "pitfalls": [
+            "Thinking fork() copies all memory immediately — it is copy-on-write.",
+            "Forgetting that exec() only returns if it fails.",
+            "Ignoring zombie processes, which consume PID table entries until reaped."
+          ],
+          "scenario": {
+            "q": "Why does a shell fork before exec instead of just exec-ing directly?",
+            "options": [
+              "So the child can change its environment (fds, limits, privileges) before replacing its image",
+              "Because exec cannot run built-in commands",
+              "Because fork is faster than exec",
+              "To keep the parent's memory shared for speed"
+            ],
+            "answer": 0,
+            "why": "The intermediate process is the place to set up redirections and permissions; the shell itself must survive to accept the next command."
+          }
+        },
+        {
+          "layer": 2,
+          "title": "Threads, Scheduling & Synchronization",
+          "tier": "FOUNDATION",
+          "minutes": 22,
+          "objectives": [
+            "Contrast threads with processes for sharing and isolation",
+            "Compare scheduling policies by their goals",
+            "Identify race conditions and fix them with mutual exclusion",
+            "Recognise the four conditions for deadlock"
+          ],
+          "concepts": [
+            {
+              "term": "Thread",
+              "definition": "An execution context inside a process, sharing its address space and descriptors but owning its own stack, registers, and program counter."
+            },
+            {
+              "term": "Race condition",
+              "definition": "A defect where the result depends on unpredictable interleaving of concurrent operations on shared state, typically a read-modify-write."
+            },
+            {
+              "term": "Mutex",
+              "definition": "A lock with atomic acquire/release that guarantees mutual exclusion. Correct use requires a consistent ordering to avoid deadlock."
+            },
+            {
+              "term": "Deadlock",
+              "definition": "A cycle of threads each holding a resource the next needs. Requires mutual exclusion, hold-and-wait, no preemption, and circular wait."
+            }
+          ],
+          "intuition": "Threads are cheap because they share memory — and dangerous for exactly the same reason. Scheduling is policy: throughput favours long quanta, latency favours short ones, and fairness needs ageing. Deadlock is prevented by breaking one of its four conditions, most practically by imposing a global lock order.",
+          "worked": {
+            "problem": "Two threads run `counter++` 10⁶ times each. The result is often less than 2×10⁶. Explain and fix.",
+            "steps": [
+              "counter++ compiles to load, add, store — three separate instructions.",
+              "Both threads can load the same value before either stores, losing an increment.",
+              "The critical section is the read-modify-write, not the source line.",
+              "Fix: guard the update with a mutex, or use an atomic fetch-and-add instruction.",
+              "With a lock, the final value is exactly 2×10⁶ but throughput drops to serialized updates."
+            ],
+            "answer": "Lost updates from non-atomic increments; use a mutex or atomic add"
+          },
+          "table": {
+            "caption": "Scheduling policies",
+            "head": [
+              "Policy",
+              "Strength",
+              "Weakness"
+            ],
+            "rows": [
+              [
+                "FCFS",
+                "Simple, no starvation",
+                "Convoy effect with long jobs"
+              ],
+              [
+                "Round robin",
+                "Responsive, fair",
+                "Many context switches"
+              ],
+              [
+                "Priority + ageing",
+                "Honours importance",
+                "Tuning ageing is delicate"
+              ],
+              [
+                "CFS / fair share",
+                "Proportional fairness",
+                "Complex accounting"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  A[Shared mutable state] --> B{Accessed concurrently?}\n  B -->|No| S[Safe]\n  B -->|Yes| C{Read-modify-write?}\n  C -->|Yes| R[Race condition]\n  R --> M[Add mutex or atomic]\n  M --> O[Define lock ordering]\n  O --> D[Deadlock avoided if consistent]",
+          "pitfalls": [
+            "Holding a lock across blocking I/O, serialising the whole service.",
+            "Acquiring two locks in different orders in different code paths.",
+            "Assuming a single-line expression is atomic."
+          ],
+          "scenario": {
+            "q": "Thread A locks X then Y; thread B locks Y then X. What is the outcome?",
+            "options": [
+              "Deadlock is possible",
+              "The kernel resolves it automatically",
+              "A race condition, but no deadlock",
+              "Only one thread runs, so it is safe"
+            ],
+            "answer": 0,
+            "why": "Each holds one resource and waits for the other: circular wait plus hold-and-wait is a textbook deadlock. A global lock order prevents it."
+          }
+        },
+        {
+          "layer": 3,
+          "title": "Memory & Virtual Address Spaces",
+          "tier": "INTERMEDIATE",
+          "minutes": 24,
+          "objectives": [
+            "Translate a virtual address through a page table",
+            "Explain demand paging and page faults",
+            "Use the TLB to reason about real access cost",
+            "Diagnose thrashing and choose a replacement policy"
+          ],
+          "concepts": [
+            {
+              "term": "Page",
+              "definition": "A fixed-size block of virtual memory (commonly 4 KiB) mapped to a physical frame. Paging eliminates external fragmentation."
+            },
+            {
+              "term": "Page table",
+              "definition": "A per-process structure mapping virtual page numbers to frame numbers plus permission bits. Multi-level tables avoid storing unused mappings."
+            },
+            {
+              "term": "Page fault",
+              "definition": "A trap raised when a page is not resident. The kernel loads it from disk or swap, updates the table, and resumes the instruction."
+            },
+            {
+              "term": "Thrashing",
+              "definition": "A state where the working set exceeds physical memory, so nearly every access faults and throughput collapses despite high CPU use."
+            }
+          ],
+          "intuition": "Virtual memory decouples the addresses a program uses from physical locations, which buys isolation, relocation, and lazy allocation. The cost is an extra translation per access, hidden by the TLB. Performance collapses when the working set no longer fits — not when memory is \"full\", but when the reuse distance exceeds what caches can hold.",
+          "worked": {
+            "problem": "A 32-bit address space uses 4 KiB pages. How many pages exist, and how large is a single-level page table with 4-byte entries?",
+            "steps": [
+              "Page size 4 KiB = 2¹², so the offset uses 12 bits.",
+              "Virtual page number uses 32 − 12 = 20 bits → 2²⁰ ≈ 1,048,576 pages.",
+              "Each entry is 4 bytes, so the table is 2²⁰ × 4 B = 4 MiB per process.",
+              "That is too large to keep resident for thousands of processes, motivating multi-level or hashed tables."
+            ],
+            "answer": "2²⁰ pages; 4 MiB per single-level table per process"
+          },
+          "table": {
+            "caption": "Page replacement policies",
+            "head": [
+              "Policy",
+              "Rule",
+              "Known pathology"
+            ],
+            "rows": [
+              [
+                "FIFO",
+                "Evict oldest",
+                "Belady's anomaly: more frames, more faults"
+              ],
+              [
+                "LRU",
+                "Evict least recently used",
+                "Expensive to implement exactly"
+              ],
+              [
+                "Clock",
+                "Approximate LRU with a reference bit",
+                "Slightly worse than LRU"
+              ],
+              [
+                "OPT",
+                "Evict the page used farthest in future",
+                "Unimplementable, used as a bound"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  V[Virtual address] --> P[Page number + offset]\n  P --> T{TLB hit?}\n  T -->|Yes| F[Physical frame]\n  T -->|No| W[Walk page table]\n  W --> R{Present?}\n  R -->|No| PF[Page fault: load from disk]\n  PF --> W\n  R -->|Yes| F\n  F --> A[Access memory]",
+          "pitfalls": [
+            "Confusing page size with frame size — they are equal by definition.",
+            "Assuming adding swap always helps; it can turn latency problems into thrashing.",
+            "Forgetting that each process has its own page table and address space."
+          ],
+          "scenario": {
+            "q": "A database server shows low CPU but constant disk reads and terrible latency. Most likely cause?",
+            "options": [
+              "Working set exceeds available memory, causing thrashing",
+              "Too many CPU cores",
+              "The TLB is too large",
+              "Page size is too small for the kernel"
+            ],
+            "answer": 0,
+            "why": "High fault-driven I/O with idle CPU is the signature of thrashing: memory pressure forces continuous page replacement."
+          }
+        },
+        {
+          "layer": 4,
+          "title": "File Systems & I/O",
+          "tier": "INTERMEDIATE",
+          "minutes": 26,
+          "objectives": [
+            "Trace a read() from syscall to disk",
+            "Explain inodes and directory entries",
+            "Reason about journaling and crash consistency",
+            "Choose between buffered, direct, and memory-mapped I/O"
+          ],
+          "concepts": [
+            {
+              "term": "Inode",
+              "definition": "On-disk metadata for a file: owner, permissions, size, timestamps, and block pointers — but not its name. Names live in directories."
+            },
+            {
+              "term": "Journaling",
+              "definition": "Writing intended metadata changes to a log before applying them, so a crash can be replayed or discarded, guaranteeing a consistent file system."
+            },
+            {
+              "term": "Page cache",
+              "definition": "Kernel memory caching file contents. Most reads are served from RAM; writeback flushes dirty pages asynchronously."
+            },
+            {
+              "term": "Memory-mapped I/O",
+              "definition": "Mapping a file into the address space so loads and stores become page faults instead of syscalls, trading explicit calls for fault overhead."
+            }
+          ],
+          "intuition": "Storage is slow, so the OS inserts layers: page cache, block scheduler, device cache. Every layer trades durability for speed. A file system's real job is not storing bytes but keeping metadata consistent when power disappears mid-write, which is why journaling exists.",
+          "worked": {
+            "problem": "Trace `read(fd, buf, 4096)` for a file not in cache.",
+            "steps": [
+              "The process traps into the kernel; the descriptor resolves to the open file description and inode.",
+              "The page cache is checked; the page is absent, so a block I/O request is queued.",
+              "The disk controller performs the transfer; the thread blocks meanwhile.",
+              "The page is inserted into the cache and marked up to date.",
+              "Data is copied to the user buffer, and read() returns 4096."
+            ],
+            "answer": "syscall → inode → page cache miss → block I/O → cache fill → copy-out"
+          },
+          "table": {
+            "caption": "I/O modes",
+            "head": [
+              "Mode",
+              "Latency profile",
+              "Durability",
+              "Use when"
+            ],
+            "rows": [
+              [
+                "Buffered read/write",
+                "Fast, cached",
+                "Deferred",
+                "General workloads"
+              ],
+              [
+                "O_DIRECT",
+                "Slow per call",
+                "Bypasses cache",
+                "Databases managing their own cache"
+              ],
+              [
+                "fsync after write",
+                "Slow but bounded",
+                "Durable on return",
+                "Committing transactions"
+              ],
+              [
+                "mmap",
+                "Fault-driven",
+                "msync required",
+                "Large read-mostly files"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  A[read()] --> B[VFS layer]\n  B --> C{Page cache hit?}\n  C -->|Yes| H[Copy to user buffer]\n  C -->|No| D[Block I/O request]\n  D --> E[Device driver]\n  E --> F[Disk]\n  F --> G[Fill page cache]\n  G --> H",
+          "pitfalls": [
+            "Assuming write() without fsync survives a crash — it may sit in cache.",
+            "Treating a directory as a file with contents; it is a name-to-inode mapping.",
+            "Using O_DIRECT for small random reads and losing cache benefits."
+          ],
+          "scenario": {
+            "q": "Why does a database call fsync after committing a transaction?",
+            "options": [
+              "To force buffered data to stable storage before reporting success",
+              "To free page cache memory",
+              "To bypass the page cache for reads",
+              "To compress the write-ahead log"
+            ],
+            "answer": 0,
+            "why": "Without fsync the commit may still be in volatile cache; durability requires an explicit flush to persistent media."
+          }
+        },
+        {
+          "layer": 5,
+          "title": "Concurrency at Scale & Isolation",
+          "tier": "ADVANCED",
+          "minutes": 30,
+          "objectives": [
+            "Explain memory ordering and acquire/release semantics",
+            "Compare futex-based locks and lock-free structures",
+            "Describe how namespaces and cgroups create containers",
+            "Reason about isolation failure modes in multi-tenant systems"
+          ],
+          "concepts": [
+            {
+              "term": "Memory ordering",
+              "definition": "The rules governing when one core's writes become visible to another. Acquire/release barriers prevent reordering across critical sections without full serialisation."
+            },
+            {
+              "term": "Futex",
+              "definition": "Fast userspace mutex: an atomic check in user space, falling back to a kernel wait only under contention, avoiding a syscall on the fast path."
+            },
+            {
+              "term": "Lock-free structure",
+              "definition": "An algorithm guaranteeing system-wide progress even if a thread stalls, typically via compare-and-swap loops rather than blocking locks."
+            },
+            {
+              "term": "Namespace / cgroup",
+              "definition": "Namespaces virtualise what a process can see (PIDs, mounts, network); cgroups limit what it can use (CPU, memory, I/O). Together they approximate a container."
+            }
+          ],
+          "intuition": "At scale, the bottleneck is often coordination, not computation. Each mechanism pushes contention somewhere cheaper: futexes keep uncontended locks in user space; lock-free queues replace blocking with retry; containers replace virtual machines with kernel-level partitioning. All of them assume the hardware's memory model is respected — compiler and CPU reordering break naive flags.",
+          "worked": {
+            "problem": "Two threads: writer sets data then flag; reader spins on flag then reads data. Why can this fail?",
+            "steps": [
+              "Without ordering constraints, the compiler or CPU may publish flag before data.",
+              "The reader can observe flag = 1 and still read stale data.",
+              "Fix: store flag with release semantics after writing data.",
+              "Reader must load flag with acquire semantics before reading data.",
+              "This creates a happens-before edge with no full barrier and no kernel involvement."
+            ],
+            "answer": "Publish with release, consume with acquire — otherwise the data race is real"
+          },
+          "table": {
+            "caption": "Isolation mechanisms",
+            "head": [
+              "Mechanism",
+              "Isolates",
+              "Not isolated"
+            ],
+            "rows": [
+              [
+                "Namespaces",
+                "View of PIDs, mounts, net, users",
+                "Kernel itself"
+              ],
+              [
+                "cgroups v2",
+                "CPU, memory, I/O budgets",
+                "Kernel vulnerabilities"
+              ],
+              [
+                "seccomp",
+                "Allowed syscalls",
+                "Logic bugs in allowed calls"
+              ],
+              [
+                "VM / microVM",
+                "Entire kernel",
+                "Hardware side channels"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  P[Process] --> N[Namespaces: what it sees]\n  P --> C[cgroups: what it uses]\n  P --> S[seccomp: what it can call]\n  N --> O[Container]\n  C --> O\n  S --> O\n  O -.->|\"shared kernel\"| K[Kernel attack surface]\n  K --> V[MicroVM if stronger isolation needed]",
+          "pitfalls": [
+            "Assuming a container is a security boundary equal to a VM — it shares the host kernel.",
+            "Using a plain boolean flag across threads without atomics and expecting visibility.",
+            "Replacing a correct mutex with a lock-free structure before measuring contention."
+          ],
+          "scenario": {
+            "q": "You must run untrusted customer code. Which isolation is strongest?",
+            "options": [
+              "A microVM with its own kernel, or a separate physical host",
+              "A container with namespaces and cgroups",
+              "seccomp filters on the host process",
+              "Dropping Linux capabilities inside a container"
+            ],
+            "answer": 0,
+            "why": "Containers share the host kernel, so a kernel exploit escapes them; a VM boundary adds a hypervisor layer."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "machine-learning",
+      "title": "Machine Learning",
+      "discipline": "Artificial Intelligence",
+      "level": "Foundation → Advanced",
+      "icon": "network",
+      "summary": "From features and loss functions to transformers — learn why models generalise, fail, and drift.",
+      "layers": [
+        {
+          "layer": 1,
+          "title": "Data, Features & the Learning Problem",
+          "tier": "FOUNDATION",
+          "minutes": 18,
+          "objectives": [
+            "Frame a task as supervised, unsupervised, or reinforcement learning",
+            "Separate features from labels and explain the role of each",
+            "Split data without leaking information",
+            "Define generalisation in measurable terms"
+          ],
+          "concepts": [
+            {
+              "term": "Feature",
+              "definition": "An input variable the model observes. Feature quality — relevance, scale, encoding — usually matters more than model choice."
+            },
+            {
+              "term": "Label",
+              "definition": "The target the model learns to predict in supervised learning. Noisy or biased labels cap achievable accuracy."
+            },
+            {
+              "term": "Train / validation / test split",
+              "definition": "Disjoint partitions used for fitting, tuning, and final evaluation. The test set is touched once, to avoid optimistic bias."
+            },
+            {
+              "term": "Generalisation",
+              "definition": "Performance on unseen data drawn from the same distribution. It is the only result that matters; training error alone is memorisation."
+            }
+          ],
+          "intuition": "A model is a compressed guess about a relationship. Training fits that guess to examples; generalisation tests whether the compression captured the pattern rather than the noise. Every methodological rule — held-out data, cross-validation, no peeking — exists to keep that test honest.",
+          "worked": {
+            "problem": "You predict apartment rents from size, rooms, and distance to transit. Identify features, label, and a leakage risk.",
+            "steps": [
+              "Features: size, number of rooms, distance to transit.",
+              "Label: monthly rent.",
+              "Leakage risk: including a column such as \"deposit\", computed from rent.",
+              "Split by building or time rather than randomly if listings repeat across rows.",
+              "Report error on a held-out set never used for tuning."
+            ],
+            "answer": "Supervised regression; guard against rent-derived columns and duplicate listings"
+          },
+          "table": {
+            "caption": "Learning paradigms",
+            "head": [
+              "Paradigm",
+              "Signal",
+              "Typical task"
+            ],
+            "rows": [
+              [
+                "Supervised",
+                "Labelled examples",
+                "Classification, regression"
+              ],
+              [
+                "Unsupervised",
+                "No labels",
+                "Clustering, dimensionality reduction"
+              ],
+              [
+                "Self-supervised",
+                "Labels derived from data",
+                "Language modelling"
+              ],
+              [
+                "Reinforcement",
+                "Reward from environment",
+                "Control, game playing"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  D[Raw data] --> F[Feature engineering]\n  F --> S[Train / val / test split]\n  S --> M[Fit model]\n  M --> V[Validate and tune]\n  V --> T[Test once]\n  T --> G{Generalises?}\n  G -->|No| F\n  G -->|Yes| P[Deploy with monitoring]",
+          "pitfalls": [
+            "Normalising using statistics computed on the full dataset before splitting.",
+            "Evaluating repeatedly on the test set until it effectively becomes validation data.",
+            "Assuming more features always help — irrelevant features add variance."
+          ],
+          "scenario": {
+            "q": "Your model scores 99% on training data and 62% on test data. What is happening?",
+            "options": [
+              "Overfitting",
+              "Underfitting",
+              "Data leakage",
+              "Perfect generalisation"
+            ],
+            "answer": 0,
+            "why": "A large train-test gap means the model memorised training noise instead of learning the underlying pattern."
+          }
+        },
+        {
+          "layer": 2,
+          "title": "Linear Models & Loss",
+          "tier": "FOUNDATION",
+          "minutes": 22,
+          "objectives": [
+            "Write a linear model and its loss function",
+            "Derive a gradient descent update",
+            "Explain learning rate effects",
+            "Apply L1 and L2 regularisation"
+          ],
+          "concepts": [
+            {
+              "term": "Linear regression",
+              "definition": "Predicts ŷ = w·x + b by minimising squared error. Its closed-form solution exists, but gradient methods scale better."
+            },
+            {
+              "term": "Loss function",
+              "definition": "A scalar measuring prediction error, such as mean squared error. Training minimises it; the choice encodes what you consider a mistake."
+            },
+            {
+              "term": "Gradient descent",
+              "definition": "Iteratively updates w ← w − η∇L(w). The learning rate η controls step size: too large diverges, too small crawls."
+            },
+            {
+              "term": "Regularisation",
+              "definition": "Penalising model complexity — L2 adds λ‖w‖², shrinking weights; L1 adds λ‖w‖₁, encouraging sparsity and feature selection."
+            }
+          ],
+          "intuition": "The loss defines the landscape; the gradient is the slope at your feet; the learning rate is your stride. Everything else — momentum, Adam, schedulers — is a refinement of that walk. Regularisation is a prior: it says \"prefer simpler explanations unless the data insists otherwise\".",
+          "worked": {
+            "problem": "For L(w) = (w − 3)², start at w = 0 with η = 0.1. Show two update steps.",
+            "steps": [
+              "Gradient: dL/dw = 2(w − 3).",
+              "At w = 0: gradient = −6, so w ← 0 − 0.1(−6) = 0.6.",
+              "At w = 0.6: gradient = 2(−2.4) = −4.8, so w ← 0.6 + 0.48 = 1.08.",
+              "The sequence approaches the minimum w = 3 without overshooting because η is small."
+            ],
+            "answer": "w: 0 → 0.6 → 1.08, converging toward 3"
+          },
+          "table": {
+            "caption": "Loss functions and their behaviour",
+            "head": [
+              "Loss",
+              "Formula",
+              "Sensitive to outliers"
+            ],
+            "rows": [
+              [
+                "MSE",
+                "(1/n)Σ(y − ŷ)²",
+                "Yes, quadratic"
+              ],
+              [
+                "MAE",
+                "(1/n)Σ|y − ŷ|",
+                "Less"
+              ],
+              [
+                "Huber",
+                "Quadratic near 0, linear far",
+                "Tunable"
+              ],
+              [
+                "Log loss",
+                "−Σ[y log p + (1−y) log(1−p)]",
+                "Penalises confident errors"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  I[Initialise weights] --> P[Predict]\n  P --> L[Compute loss]\n  L --> G[Compute gradient]\n  G --> U[\"Update w ← w − η∇L\"]\n  U --> C{Converged?}\n  C -->|No| P\n  C -->|Yes| E[Evaluate on validation]",
+          "pitfalls": [
+            "Using a learning rate too large and seeing the loss oscillate or explode.",
+            "Regularising the bias term along with the weights.",
+            "Comparing MSE values across datasets with different scales."
+          ],
+          "scenario": {
+            "q": "Training loss decreases, validation loss increases. What should you try first?",
+            "options": [
+              "Increase regularisation or reduce model capacity",
+              "Train longer",
+              "Increase learning rate",
+              "Remove the validation set"
+            ],
+            "answer": 0,
+            "why": "This is the classic overfitting signature; constraining the model or adding data addresses it, while training longer worsens it."
+          }
+        },
+        {
+          "layer": 3,
+          "title": "Classification & Evaluation",
+          "tier": "INTERMEDIATE",
+          "minutes": 25,
+          "objectives": [
+            "Convert a score into a class with a threshold",
+            "Compute precision, recall, and F1 from a confusion matrix",
+            "Interpret ROC and precision-recall curves",
+            "Choose a metric that matches the cost of errors"
+          ],
+          "concepts": [
+            {
+              "term": "Logistic regression",
+              "definition": "Models P(y=1|x) = σ(w·x + b) with the sigmoid. It is a linear classifier whose outputs are calibrated probabilities."
+            },
+            {
+              "term": "Confusion matrix",
+              "definition": "Counts of true positives, false positives, false negatives, and true negatives. Every classification metric is derived from these four numbers."
+            },
+            {
+              "term": "Precision & recall",
+              "definition": "Precision = TP/(TP+FP) — of the flagged positives, how many were real. Recall = TP/(TP+FN) — of the real positives, how many were found."
+            },
+            {
+              "term": "AUC",
+              "definition": "Area under the ROC curve: the probability that a random positive scores above a random negative. Threshold-independent, but insensitive to class imbalance."
+            }
+          ],
+          "intuition": "A classifier outputs a score; a threshold makes a decision, and the threshold encodes your error costs. Precision and recall pull in opposite directions, so \"accuracy\" can be misleading when classes are rare: 99% accuracy is trivial if 99% of cases are negative. Pick the metric before you look at results.",
+          "worked": {
+            "problem": "A fraud model flags 200 transactions. 120 are fraud, 80 are not. There were 300 actual frauds. Compute precision and recall.",
+            "steps": [
+              "TP = 120, FP = 80, FN = 300 − 120 = 180.",
+              "Precision = 120 / (120 + 80) = 0.60.",
+              "Recall = 120 / (120 + 180) = 0.40.",
+              "F1 = 2 · (0.6 · 0.4) / (0.6 + 0.4) = 0.48.",
+              "The model finds only 40% of fraud: lowering the threshold would raise recall at the cost of precision."
+            ],
+            "answer": "precision 0.60, recall 0.40, F1 0.48"
+          },
+          "table": {
+            "caption": "Metric choice by cost profile",
+            "head": [
+              "Situation",
+              "Prioritise",
+              "Why"
+            ],
+            "rows": [
+              [
+                "Missing a fraud is expensive",
+                "Recall",
+                "False negatives dominate cost"
+              ],
+              [
+                "Flagging a user is expensive",
+                "Precision",
+                "False positives erode trust"
+              ],
+              [
+                "Balanced costs, imbalanced classes",
+                "F1 or PR-AUC",
+                "Accuracy misleads"
+              ],
+              [
+                "Ranking, threshold-free",
+                "ROC-AUC",
+                "Measures separability"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  S[Model score] --> T[Choose threshold]\n  T --> C[Confusion matrix]\n  C --> P[Precision]\n  C --> R[Recall]\n  P --> F[F1]\n  R --> F\n  T --> V[Vary threshold]\n  V --> U[ROC / PR curve]\n  U --> A[AUC]",
+          "pitfalls": [
+            "Reporting accuracy on a 1%-positive dataset and calling 99% excellent.",
+            "Optimising the threshold on the test set.",
+            "Using ROC-AUC when the positive class is rare and operational precision is what matters."
+          ],
+          "scenario": {
+            "q": "A cancer screen must not miss cases. Which operating point is appropriate?",
+            "options": [
+              "High recall, accepting more false positives",
+              "High precision, accepting more false negatives",
+              "Balanced F1 regardless of cost",
+              "Whatever maximises accuracy"
+            ],
+            "answer": 0,
+            "why": "When a false negative is dangerous, the threshold should be lowered to catch more positives even at the cost of extra follow-up tests."
+          }
+        },
+        {
+          "layer": 4,
+          "title": "Trees, Ensembles & Unsupervised Learning",
+          "tier": "INTERMEDIATE",
+          "minutes": 28,
+          "objectives": [
+            "Explain how a decision tree splits on impurity",
+            "Compare bagging with boosting",
+            "Cluster data with k-means and choose k",
+            "Reduce dimensions with PCA"
+          ],
+          "concepts": [
+            {
+              "term": "Gini impurity",
+              "definition": "1 − Σpᵢ² over class proportions in a node. Splits are chosen to maximise the impurity drop, giving axis-aligned decision boundaries."
+            },
+            {
+              "term": "Bagging",
+              "definition": "Train many trees on bootstrap samples and average them. Reduces variance; random forests add feature subsampling for decorrelation."
+            },
+            {
+              "term": "Boosting",
+              "definition": "Sequentially fit weak learners to the residual errors of the current ensemble. Reduces bias, but must be regularised against overfitting."
+            },
+            {
+              "term": "k-means",
+              "definition": "Alternates assigning points to the nearest centroid and recomputing centroids. Minimises within-cluster variance; assumes roughly spherical, equal-variance clusters."
+            }
+          ],
+          "intuition": "Trees are interpretable but unstable — a small data change can redraw the splits. Ensembles turn that weakness into strength: averaging decorrelated trees cancels variance, while boosting deliberately targets what the ensemble still gets wrong. Unsupervised methods have no ground truth, so validation is qualitative and domain-driven.",
+          "worked": {
+            "problem": "A node has 8 positives and 2 negatives. Compute its Gini impurity.",
+            "steps": [
+              "Proportions: p₁ = 0.8, p₂ = 0.2.",
+              "Gini = 1 − (0.8² + 0.2²).",
+              "= 1 − (0.64 + 0.04) = 0.32.",
+              "A perfect split would reach 0; a 50/50 node would be 0.5."
+            ],
+            "answer": "0.32"
+          },
+          "table": {
+            "caption": "Ensemble strategies",
+            "head": [
+              "Method",
+              "Reduces",
+              "Mechanism"
+            ],
+            "rows": [
+              [
+                "Random forest",
+                "Variance",
+                "Bagging + feature subsampling"
+              ],
+              [
+                "Gradient boosting",
+                "Bias",
+                "Sequential residual fitting"
+              ],
+              [
+                "Stacking",
+                "Both (sometimes)",
+                "Meta-model over base predictions"
+              ],
+              [
+                "Isolation forest",
+                "—",
+                "Anomaly detection via random splits"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  D[Dataset] --> T{Supervised?}\n  T -->|Yes| E{Error profile?}\n  E -->|High variance| B[Bagging / random forest]\n  E -->|High bias| G[Boosting]\n  T -->|No| U{Goal?}\n  U -->|Grouping| K[k-means / DBSCAN]\n  U -->|Compression| P[PCA / t-SNE]",
+          "pitfalls": [
+            "Choosing k for k-means without checking cluster stability or domain meaning.",
+            "Letting a single deep tree overfit without pruning or depth limits.",
+            "Applying PCA before scaling features, so the largest-variance unit dominates."
+          ],
+          "scenario": {
+            "q": "Your random forest has high variance across folds and individual trees are very deep. Best fix?",
+            "options": [
+              "Limit depth and increase the number of trees",
+              "Switch to a single tree",
+              "Remove cross-validation",
+              "Increase learning rate"
+            ],
+            "answer": 0,
+            "why": "Constraining depth tames individual tree variance, and averaging more decorrelated trees further stabilises predictions."
+          }
+        },
+        {
+          "layer": 5,
+          "title": "Deep Learning, Transformers & Deployment",
+          "tier": "ADVANCED",
+          "minutes": 32,
+          "objectives": [
+            "Explain backpropagation as the chain rule on a graph",
+            "Describe attention and why transformers scale",
+            "Distinguish pretraining from fine-tuning",
+            "Diagnose distribution shift and monitor a deployed model"
+          ],
+          "concepts": [
+            {
+              "term": "Backpropagation",
+              "definition": "Reverse-mode automatic differentiation over the computation graph: gradients of the loss with respect to every parameter, computed in one backward pass."
+            },
+            {
+              "term": "Attention",
+              "definition": "Each token forms a query, key, and value; weights are softmax(QKᵀ/√d) applied to values. It lets every position integrate information from every other position."
+            },
+            {
+              "term": "Embedding",
+              "definition": "A learned dense vector representing a token, item, or user, positioned so that semantic similarity becomes geometric proximity."
+            },
+            {
+              "term": "Distribution shift",
+              "definition": "Deployment data differs from training data — covariate shift, label shift, or concept drift — silently degrading accuracy without any code change."
+            }
+          ],
+          "intuition": "Deep networks are function compositions, and backprop is just the chain rule applied efficiently from the output backwards. Attention replaced recurrence because it parallelises over sequence length and lets distant tokens interact in one step. Deployment is where machine learning becomes engineering: a model is a hypothesis about a distribution, and distributions move.",
+          "worked": {
+            "problem": "A deployed churn model drops from 0.88 to 0.71 AUC two months after launch. Outline a diagnosis.",
+            "steps": [
+              "Compare input distributions: check feature drift with PSI or KS tests.",
+              "Verify the label pipeline has not changed (late-arriving labels can fake a drop).",
+              "Segment performance by cohort to find where the degradation concentrates.",
+              "Check whether a competing product launch changed behaviour (concept drift).",
+              "Decide: retrain on recent data, add the new signal as a feature, or recalibrate thresholds."
+            ],
+            "answer": "Measure drift first, then segment, then retrain or recalibrate — never assume it is a bug"
+          },
+          "table": {
+            "caption": "Architecture families",
+            "head": [
+              "Family",
+              "Inductive bias",
+              "Strong at"
+            ],
+            "rows": [
+              [
+                "CNN",
+                "Local translation equivariance",
+                "Images, signals"
+              ],
+              [
+                "RNN / LSTM",
+                "Sequential recurrence",
+                "Streaming sequences"
+              ],
+              [
+                "Transformer",
+                "Global attention, order via encoding",
+                "Language, long-range structure"
+              ],
+              [
+                "GNN",
+                "Relational message passing",
+                "Molecules, social graphs"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  X[Input tokens] --> E[Embeddings + position]\n  E --> A[\"Self-attention: Q K V\"]\n  A --> N[Feed-forward + norm]\n  N --> L[Stack N layers]\n  L --> H[Task head]\n  H --> L2[Loss]\n  L2 -->|backprop| E",
+          "pitfalls": [
+            "Fine-tuning on a tiny dataset with a high learning rate, destroying pretrained representations.",
+            "Evaluating a deployed model only on the original test set, missing drift.",
+            "Treating attention weights as a faithful explanation of model reasoning."
+          ],
+          "scenario": {
+            "q": "Why does attention scale better than recurrence during training?",
+            "options": [
+              "All positions are processed in parallel instead of sequentially",
+              "Attention uses fewer parameters",
+              "It removes the need for a loss function",
+              "It eliminates the need for positional information"
+            ],
+            "answer": 0,
+            "why": "Self-attention computes all pairwise interactions as one matrix operation, so GPUs stay busy across the whole sequence; recurrence is inherently sequential."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "tech-ethics",
+      "title": "Tech Ethics",
+      "discipline": "Humanities",
+      "level": "Foundation → Advanced",
+      "icon": "scales",
+      "summary": "Moral reasoning, privacy, fairness, accountability, and frontier risk — practised as engineering judgement, not opinion.",
+      "layers": [
+        {
+          "layer": 1,
+          "title": "Moral Frameworks for Engineers",
+          "tier": "FOUNDATION",
+          "minutes": 18,
+          "objectives": [
+            "Apply consequentialist, deontological, and virtue reasoning to a design decision",
+            "Identify stakeholders and their conflicting interests",
+            "Distinguish a moral claim from a preference",
+            "Use a structured ethical decision procedure"
+          ],
+          "concepts": [
+            {
+              "term": "Consequentialism",
+              "definition": "Judges actions by outcomes: choose the option with the best overall consequences, often measured as total welfare."
+            },
+            {
+              "term": "Deontology",
+              "definition": "Judges actions by duties and rules regardless of outcome — for example, never deceive users, even when it would increase engagement."
+            },
+            {
+              "term": "Virtue ethics",
+              "definition": "Asks what a person of good character would do: honesty, care, practical wisdom. It focuses on the agent rather than the act."
+            },
+            {
+              "term": "Stakeholder analysis",
+              "definition": "Enumerating everyone affected by a decision — users, non-users, employees, communities — and mapping who bears risk versus who captures benefit."
+            }
+          ],
+          "intuition": "Frameworks are not competing answers; they are different lenses that reveal different blind spots. Consequentialism asks who is helped and harmed, deontology asks what you must not do, virtue asks who you become while shipping. Sound engineering judgement uses at least two lenses before committing.",
+          "worked": {
+            "problem": "A dark pattern increases sign-ups by 12%. Analyse it with two frameworks.",
+            "steps": [
+              "Consequentialist: short-term sign-ups rise, but trust loss and churn may outweigh the gain; include support cost and reputational risk.",
+              "Deontological: if the design relies on confusing the user, it violates the duty of informed consent regardless of the metric.",
+              "Virtue: would you be comfortable explaining the design to the affected user?",
+              "Stakeholder check: the company captures the metric; the user bears the cost of an unwanted subscription.",
+              "Conclusion: reject the pattern, or redesign so consent is genuine."
+            ],
+            "answer": "The metric gain does not survive either lens; the design should not ship"
+          },
+          "table": {
+            "caption": "What each lens optimises",
+            "head": [
+              "Framework",
+              "Question",
+              "Typical blind spot"
+            ],
+            "rows": [
+              [
+                "Consequentialist",
+                "What happens?",
+                "Distant or diffuse harms"
+              ],
+              [
+                "Deontological",
+                "What am I permitted to do?",
+                "Rigidity in hard trade-offs"
+              ],
+              [
+                "Virtue",
+                "What would a good engineer do?",
+                "Vagueness under pressure"
+              ],
+              [
+                "Stakeholder",
+                "Who is affected and how?",
+                "Power asymmetry not addressed"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  P[Decision] --> C[Consequences?]\n  P --> D[Duties and rights?]\n  P --> V[Character and care?]\n  P --> S[Who is affected?]\n  C --> J[Weigh and justify]\n  D --> J\n  V --> J\n  S --> J\n  J --> R{Justifiable to those affected?}\n  R -->|No| X[Redesign or refuse]\n  R -->|Yes| Y[Document reasoning]",
+          "pitfalls": [
+            "Treating ethics as purely subjective and therefore skippable.",
+            "Counting only measurable stakeholders and ignoring those without a voice.",
+            "Using one framework to rationalise a decision already made for commercial reasons."
+          ],
+          "scenario": {
+            "q": "A team ships a recommendation model without an opt-out, arguing users can just ignore it. Which lens most directly challenges this?",
+            "options": [
+              "Deontology, because it removes a user's ability to choose",
+              "Consequentialism, because recommendations are popular",
+              "Virtue ethics, because engineering is hard",
+              "None — no harm is measurable"
+            ],
+            "answer": 0,
+            "why": "The core objection is about autonomy and consent, which is a duty-based concern; utility arguments for engagement do not answer it."
+          }
+        },
+        {
+          "layer": 2,
+          "title": "Privacy & Data Governance",
+          "tier": "FOUNDATION",
+          "minutes": 20,
+          "objectives": [
+            "Classify data by sensitivity and purpose",
+            "Apply data minimisation and purpose limitation",
+            "Distinguish anonymisation from pseudonymisation",
+            "Write a lawful basis summary for a feature"
+          ],
+          "concepts": [
+            {
+              "term": "Personally identifiable information (PII)",
+              "definition": "Data that can identify, or be linked to, an individual — directly (name, email) or indirectly (device id, precise location)."
+            },
+            {
+              "term": "Data minimisation",
+              "definition": "Collect only what the stated purpose requires, for only as long as required. It reduces breach impact and legal exposure simultaneously."
+            },
+            {
+              "term": "Anonymisation vs pseudonymisation",
+              "definition": "Pseudonymised data still allows re-identification with extra information; anonymised data cannot be re-identified by reasonable means and falls outside most consent regimes."
+            },
+            {
+              "term": "Retention policy",
+              "definition": "Rules defining how long each data class is kept and what destroys it. Absent deletion is a liability, not a neutral default."
+            }
+          ],
+          "intuition": "Privacy is an engineering property, not a legal afterthought. The cheapest way to protect sensitive data is never to collect it. When collection is necessary, separate identity from behaviour, scope the purpose, and set an expiry — because the breach you prevent is worth more than the compliance checkbox you earn.",
+          "worked": {
+            "problem": "A product team wants device location every 30 seconds to improve delivery estimates. Apply data minimisation.",
+            "steps": [
+              "State the purpose precisely: estimate arrival windows while an order is active.",
+              "Reduce granularity: city-level or geohash precision rather than exact coordinates.",
+              "Reduce frequency: poll on order state changes rather than every 30 seconds.",
+              "Reduce lifetime: delete raw fixes after the order completes, keep aggregates.",
+              "Result: the purpose is served with a fraction of the exposure."
+            ],
+            "answer": "Coarser precision, event-driven collection, short retention, aggregate only"
+          },
+          "table": {
+            "caption": "Handling by data class",
+            "head": [
+              "Class",
+              "Examples",
+              "Default handling"
+            ],
+            "rows": [
+              [
+                "Direct identifiers",
+                "Name, email, phone",
+                "Encrypt at rest, restrict access"
+              ],
+              [
+                "Quasi-identifiers",
+                "Zip, birth date, gender",
+                "Generalise before analysis"
+              ],
+              [
+                "Sensitive attributes",
+                "Health, biometrics, ethnicity",
+                "Explicit consent, strict purpose"
+              ],
+              [
+                "Derived signals",
+                "Inferred interests, risk scores",
+                "Explainable, contestable, reviewable"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  C[Collect] --> P{Purpose stated?}\n  P -->|No| S[Stop: redesign]\n  P -->|Yes| M[Minimise fields]\n  M --> R[Set retention]\n  R --> A{Access needed?}\n  A -->|Yes| L[Log and scope]\n  A -->|No| D[Delete]\n  L --> X[Delete at expiry]",
+          "pitfalls": [
+            "Calling hashed identifiers \"anonymous\" when the mapping table still exists.",
+            "Retaining raw logs indefinitely \"for debugging\" without an expiry.",
+            "Treating consent as a one-time click rather than an ongoing, revocable basis."
+          ],
+          "scenario": {
+            "q": "Hashing user emails with an unsalted function still risks what?",
+            "options": [
+              "Re-identification through rainbow tables or correlation with other datasets",
+              "Nothing — hashing is always anonymisation",
+              "Slower queries",
+              "Loss of compression"
+            ],
+            "answer": 0,
+            "why": "Unsalted hashes of low-entropy values like emails are reversible by enumeration, and the hash itself is a stable join key."
+          }
+        },
+        {
+          "layer": 3,
+          "title": "Bias, Fairness & Harm",
+          "tier": "INTERMEDIATE",
+          "minutes": 24,
+          "objectives": [
+            "Trace how historical bias becomes model bias",
+            "Distinguish proxy variables from protected attributes",
+            "Compare fairness definitions and explain why they conflict",
+            "Design a harm reduction and red-teaming loop"
+          ],
+          "concepts": [
+            {
+              "term": "Proxy variable",
+              "definition": "A feature correlated with a protected attribute — postcode with ethnicity, or name with gender — carrying discrimination even when the protected attribute is excluded."
+            },
+            {
+              "term": "Disparate impact",
+              "definition": "A neutral-seeming policy producing substantially different outcomes across groups. Intent is irrelevant to the measurement."
+            },
+            {
+              "term": "Feedback loop",
+              "definition": "Predictions shape future data. Policing deployed to a neighbourhood generates arrests there, which \"confirms\" the original prediction."
+            },
+            {
+              "term": "Fairness impossibility",
+              "definition": "Demographic parity, equalised odds, and calibration generally cannot hold simultaneously when base rates differ; the choice is a values decision."
+            }
+          ],
+          "intuition": "A model learns the world as recorded, including its inequities. Removing a protected attribute does not remove the signal — correlated features reconstruct it. Because fairness metrics conflict mathematically, \"fair\" must be defined explicitly, with the harm model stated, before evaluation.",
+          "worked": {
+            "problem": "A hiring model excludes gender but uses \"years since graduation\" and \"leadership in a fraternity\". Analyse.",
+            "steps": [
+              "Postcode-like proxies remain: graduation timing correlates with caregiving gaps, often gendered.",
+              "Fraternity membership is a gendered social proxy with near-zero job relevance.",
+              "Test for disparate impact by measuring selection rate ratios across groups.",
+              "Remove or justify each feature with job-relatedness evidence.",
+              "Audit outcomes, not just inputs, and document the chosen fairness definition."
+            ],
+            "answer": "Inputs are proxies, not neutral: measure impact and prune unjustified features"
+          },
+          "table": {
+            "caption": "Fairness definitions in tension",
+            "head": [
+              "Definition",
+              "Guarantee",
+              "Tension"
+            ],
+            "rows": [
+              [
+                "Demographic parity",
+                "Equal positive rates",
+                "Ignores differing base rates"
+              ],
+              [
+                "Equalised odds",
+                "Equal TPR and FPR",
+                "Requires group-aware thresholds"
+              ],
+              [
+                "Calibration",
+                "Scores mean the same per group",
+                "Can coexist with unequal error costs"
+              ],
+              [
+                "Individual fairness",
+                "Similar people treated similarly",
+                "Depends on a similarity metric"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  H[Historical data] --> B[Encoded bias]\n  B --> M[Model learns pattern]\n  M --> D[Deployment]\n  D --> O[Outcomes by group]\n  O --> F[Feedback into data]\n  F --> H\n  O --> A{Audit}\n  A -->|Disparity| R[Remediate: data, features, thresholds]\n  R --> M",
+          "pitfalls": [
+            "Believing that dropping the protected column makes a model fair.",
+            "Optimising one fairness metric and silently degrading another.",
+            "Auditing only aggregate accuracy instead of per-group error rates."
+          ],
+          "scenario": {
+            "q": "A model is equally accurate for two groups but approves group A at twice the rate because base rates differ. Which fairness claim holds?",
+            "options": [
+              "Calibration may hold while demographic parity fails",
+              "Demographic parity holds",
+              "Both parity and calibration hold",
+              "No fairness statement can be made"
+            ],
+            "answer": 0,
+            "why": "Equal accuracy and calibration are compatible with different approval rates when base rates differ; that tension is exactly the impossibility result."
+          }
+        },
+        {
+          "layer": 4,
+          "title": "Accountability, Transparency & IP",
+          "tier": "INTERMEDIATE",
+          "minutes": 26,
+          "objectives": [
+            "Distinguish explainability from interpretability",
+            "Design an audit trail sufficient for post-hoc review",
+            "Apply licence obligations to dependencies and models",
+            "Define a responsible disclosure and whistleblowing path"
+          ],
+          "concepts": [
+            {
+              "term": "Interpretability vs explainability",
+              "definition": "Interpretable models are understandable by construction (linear, shallow trees); explainability approximates reasons for complex models after the fact."
+            },
+            {
+              "term": "Audit trail",
+              "definition": "Immutable records of decisions, inputs, model versions, and operator actions, sufficient to reconstruct why an outcome occurred."
+            },
+            {
+              "term": "Model licence",
+              "definition": "The terms governing use of weights and architecture — permissive, copyleft, or restricted to research. They are distinct from the code licence."
+            },
+            {
+              "term": "Responsible disclosure",
+              "definition": "A defined channel and timeline for reporting vulnerabilities so they can be fixed before public detail, with legal protection for good-faith reporters."
+            }
+          ],
+          "intuition": "Accountability means a named human can answer for a system's behaviour. That requires records, versioning, and documented decision boundaries. Transparency is not publishing source code; it is giving affected people a meaningful account of the decision and a route to contest it.",
+          "worked": {
+            "problem": "A credit model denies an applicant. What must the system be able to produce on request?",
+            "steps": [
+              "The decision and timestamp, plus the model version and threshold in force.",
+              "The principal factors contributing to the score, in plain language.",
+              "The data sources used and their freshness.",
+              "The appeal route, with a human reviewer empowered to override.",
+              "Retention of these records for the regulatory period."
+            ],
+            "answer": "Decision, version, factors, data provenance, appeal path, and retention"
+          },
+          "table": {
+            "caption": "Transparency artefacts",
+            "head": [
+              "Artefact",
+              "Answers",
+              "Audience"
+            ],
+            "rows": [
+              [
+                "Model card",
+                "What it does, limits, metrics",
+                "Internal and external reviewers"
+              ],
+              [
+                "Data sheet",
+                "Provenance, consent, known gaps",
+                "Legal, research, audit"
+              ],
+              [
+                "Decision log",
+                "What happened for this case",
+                "Support, regulators, appeals"
+              ],
+              [
+                "Incident postmortem",
+                "What failed and what changed",
+                "Engineering, leadership"
+              ]
+            ]
+          },
+          "diagram": "flowchart LR\n  D[Decision] --> L[Log inputs, version, factors]\n  L --> E[Explain to affected person]\n  E --> A[Appeal channel]\n  A --> H[Human review]\n  H --> O{Override?}\n  O -->|Yes| F[Fix data or rule]\n  O -->|No| C[Close with reason]\n  F --> M[Model or process update]",
+          "pitfalls": [
+            "Offering feature importances as if they were causal explanations for an individual decision.",
+            "Shipping model weights under a research-only licence in a commercial product.",
+            "Logging predictions without model versions, making incidents impossible to reconstruct."
+          ],
+          "scenario": {
+            "q": "Why is a versioned model registry essential for accountability?",
+            "options": [
+              "It lets you reconstruct which model produced a past decision",
+              "It improves accuracy automatically",
+              "It replaces the need for an audit log",
+              "It guarantees regulatory compliance"
+            ],
+            "answer": 0,
+            "why": "Without version pinning you cannot reproduce or explain historical outcomes, which undermines appeals and incident review."
+          }
+        },
+        {
+          "layer": 5,
+          "title": "Frontier Risk & Governance",
+          "tier": "ADVANCED",
+          "minutes": 30,
+          "objectives": [
+            "Distinguish dual-use capability from misuse risk",
+            "Reason about alignment and specification gaming",
+            "Map regulatory approaches and their trade-offs",
+            "Design a staged deployment with capability evaluations"
+          ],
+          "concepts": [
+            {
+              "term": "Dual-use capability",
+              "definition": "A capability with clear beneficial uses and plausible catastrophic misuse, such as synthesis planning or cyber tooling. Governance must preserve benefit while limiting amplification."
+            },
+            {
+              "term": "Specification gaming",
+              "definition": "Optimising the literal objective rather than the intended one — a cleaning agent that hides dirt, a recommender that maximises clicks with outrage."
+            },
+            {
+              "term": "Precautionary principle",
+              "definition": "When harm is potentially severe and uncertain, act to reduce risk before full evidence arrives, shifting the burden of proof onto deployers."
+            },
+            {
+              "term": "Staged deployment",
+              "definition": "Releasing capability in widening circles gated by evaluations, monitoring, and rollback plans, rather than a single global launch."
+            }
+          ],
+          "intuition": "Frontier risk is a governance problem as much as a technical one: the people best placed to measure a capability are often the ones incentivised to deploy it. Durable safeguards therefore combine independent evaluation, external audit, and the ability to reverse a deployment — not just an internal promise.",
+          "worked": {
+            "problem": "Design a staged release for an assistant with improved cyber-reasoning.",
+            "steps": [
+              "Define capability thresholds and evaluation suites before training completes.",
+              "Run pre-deployment red-teaming with external experts on uplift for attack tasks.",
+              "Release to a limited cohort with logging, abuse detection, and rate limits.",
+              "Gate wider access on measured misuse signals and independent review.",
+              "Pre-commit to rollback triggers and publish an incident process."
+            ],
+            "answer": "Threshold-defined evals → external red team → limited cohort → gated expansion → rollback triggers"
+          },
+          "table": {
+            "caption": "Governance instruments",
+            "head": [
+              "Instrument",
+              "Strength",
+              "Weakness"
+            ],
+            "rows": [
+              [
+                "Internal review board",
+                "Fast, context-aware",
+                "Conflict of interest"
+              ],
+              [
+                "External audit",
+                "Independent",
+                "Slow, information asymmetry"
+              ],
+              [
+                "Regulation",
+                "Enforceable",
+                "Lags capability"
+              ],
+              [
+                "Standards and certification",
+                "Flexible, comparable",
+                "Voluntary adoption"
+              ]
+            ]
+          },
+          "diagram": "flowchart TD\n  C[Capability] --> E[Evaluate thresholds]\n  E --> R{Risk acceptable?}\n  R -->|No| X[Hold or restrict]\n  R -->|Yes| P[Pilot cohort]\n  P --> M[Monitor misuse signals]\n  M --> G{Gates met?}\n  G -->|Yes| W[Widen release]\n  G -->|No| B[Rollback]\n  W --> A[Independent audit]",
+          "pitfalls": [
+            "Publishing capability evaluations without a plan to act on them.",
+            "Treating a policy document as a control when no one can verify compliance.",
+            "Assuming misuse requires sophistication when simple automation scales harm."
+          ],
+          "scenario": {
+            "q": "A team measures a dangerous capability internally and finds it below threshold. What is the governance gap?",
+            "options": [
+              "Self-assessment without independent verification or a binding action trigger",
+              "The threshold was measured at all",
+              "Nothing — internal measurement is sufficient",
+              "The capability should be published in full"
+            ],
+            "answer": 0,
+            "why": "Internal measurement is necessary but not sufficient: without external verification and a pre-committed response, the evaluation cannot constrain deployment."
+          }
+        }
+      ]
+    }
+  ]
+}
