@@ -1,0 +1,33 @@
+{
+  "name": "edtech-socratic-tutor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Atlas — an adaptive Socratic EdTech tutoring platform with layered curricula, secure assessments, and SRS review.",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,magenta \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "dev:ai": "npm --prefix ai-engine run dev --if-present",
+    "build": "npm --prefix client run build",
+    "start": "npm --prefix server run start",
+    "test": "npm --prefix server test",
+    "typecheck": "npm --prefix client run typecheck",
+    "smoke": "npm --prefix server run smoke",
+    "db:generate": "npm --prefix server run db:generate",
+    "db:push": "npm --prefix server run db:push",
+    "db:seed": "npm --prefix server run db:seed",
+    "db:dev:setup": "npm --prefix server run db:dev:setup",
+    "setup": "npm install && npm run db:dev:setup",
+    "setup:postgres": "npm install && npm run db:generate && npm run db:push && npm run db:seed"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.17"
+  }
+}
