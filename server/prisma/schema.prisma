@@ -1,0 +1,152 @@
+// Atlas — Prisma schema (PostgreSQL)
+// Users hold bcrypt password hashes and a credit balance. Every credit-spending
+// action is mirrored into AuditLog for enterprise-grade traceability.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String           @id @default(cuid())
+  username     String           @unique
+  passwordHash String
+  credits      Int              @default(60)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  enrollments  Enrollment[]
+  progress     ModuleProgress[]
+  attempts     QuizAttempt[]
+  cards        Flashcard[]
+  audits       AuditLog[]
+
+  @@index([createdAt])
+}
+
+model Course {
+  id          String           @id @default(cuid())
+  slug        String           @unique
+  title       String
+  discipline  String
+  level       String
+  summary     String
+  order       Int              @default(0)
+  createdAt   DateTime         @default(now())
+  modules     Module[]
+  enrollments Enrollment[]
+  progress    ModuleProgress[]
+  attempts    QuizAttempt[]
+  cards       Flashcard[]
+
+  @@index([discipline])
+}
+
+model Module {
+  id       String           @id @default(cuid())
+  courseId String
+  course   Course           @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  layer    Int
+  title    String
+  tier     String
+  minutes  Int
+  concepts Json
+  progress ModuleProgress[]
+  attempts QuizAttempt[]
+  cards    Flashcard[]
+
+  @@unique([courseId, layer])
+  @@index([courseId])
+}
+
+model Enrollment {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, courseId])
+  @@index([userId])
+}
+
+model ModuleProgress {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  moduleId       String
+  module         Module    @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  courseId       String
+  course         Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  status         String    @default("LOCKED") // LOCKED | UNLOCKED | IN_PROGRESS | PASSED
+  bestScore      Float?
+  attempts       Int       @default(0)
+  retestEligible Boolean   @default(false)
+  passedAt       DateTime?
+  updatedAt      DateTime  @updatedAt
+
+  @@unique([userId, moduleId])
+  @@index([userId, courseId])
+}
+
+model QuizAttempt {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId        String
+  course          Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  moduleId        String
+  module          Module    @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  difficulty      String
+  durationSeconds Int
+  variantSeed     Int
+  questions       Json
+  answers         Json?
+  integrityEvents Json?
+  infractions     Int       @default(0)
+  flagged         Boolean   @default(false)
+  score           Float?
+  passed          Boolean   @default(false)
+  startedAt       DateTime  @default(now())
+  submittedAt     DateTime?
+
+  @@index([userId, moduleId])
+  @@index([submittedAt])
+}
+
+model Flashcard {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId       String
+  course         Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  moduleId       String?
+  module         Module?   @relation(fields: [moduleId], references: [id], onDelete: SetNull)
+  front          String
+  back           String
+  easeFactor     Float     @default(2.5)
+  interval       Int       @default(0)
+  repetitions    Int       @default(0)
+  lapses         Int       @default(0)
+  dueAt          DateTime  @default(now())
+  lastReviewedAt DateTime?
+
+  @@unique([userId, courseId, front])
+  @@index([userId, dueAt])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String
+  meta      Json?
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([action])
+}
