@@ -1,5 +1,7 @@
 # Atlas — Adaptive Socratic EdTech Tutor
 
+https://site-65afc13a41b141c68e2587881af9e263.freebuff.page/login?next=/
+
 Atlas is a full-stack tutoring platform that refuses to skip the foundations. Every subject is a
 strictly ordered ladder of five layers: it opens with the absolute basics and only unlocks advanced
 material after the learner passes a timed assessment at **75%** or higher.
